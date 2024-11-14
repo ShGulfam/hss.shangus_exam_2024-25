@@ -1,449 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admission & Examination Section - HSS Shangus</title>
-    <style>
-        /* Reset some default styles */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f6f8;
-            color: #333;
-            line-height: 1.6;
-        }
-
-        header {
-            background-color: #004080;
-            color: #fff;
-            padding: 20px 0;
-            text-align: center;
-        }
-
-        header img {
-            max-width: 150px;
-            margin-bottom: 10px;
-        }
-
-        main {
-            padding: 20px;
-            max-width: 1200px; /* Increased width for more headers */
-            margin: 20px auto;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-        }
-        
-        h2 {
-            margin-bottom: 20px;
-            text-align: center;
-            color: #004080;
-        }
-
-        /* Important Notice Styling */
-        .important-notice {
-            font-size: 0.9em; /* Smaller font size */
-            background-color: #fff3cd; /* Light yellow background for visibility */
-            border-left: 4px solid #ffeeba; /* Accent border */
-            padding: 15px;
-            margin-bottom: 20px;
-            border-radius: 4px;
-        }
-
-        .important-notice strong {
-            display: block;
-            margin-bottom: 10px;
-            color: #856404; /* Darker text for emphasis */
-        }
-
-        .important-notice ul {
-            list-style-type: disc;
-            margin-left: 20px;
-            margin-bottom: 10px;
-        }
-
-        .important-notice li {
-            margin-bottom: 5px;
-        }
-
-        /* Flexbox for headers */
-        .headers-container {
-            overflow-x: auto; /* Enable horizontal scrolling if needed */
-            margin-bottom: 20px;
-        }
-
-        .headers {
-            display: flex;
-            flex-wrap: nowrap; /* Prevent wrapping to multiple lines */
-            background-color: #e6f0ff; /* Consistent background color */
-            padding: 0px;
-            border-radius: 1px;
-        }
-
-        .headers div {
-            flex: 0 0 auto; /* Prevent flex items from shrinking */
-            min-width: px; /* Set a minimum width for each header */
-            padding: 5px 10px;
-            font-weight: bold;
-            text-align: center;
-            border-right: 1px solid #ccc;
-            background-color: #e6f0ff; /* Ensure each header has the same background */
-        }
-
-        .headers div:last-child {
-            border-right: none; /* Remove border from the last header */
-        }
-
-        /* Form styling */
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        label {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-
-        input[type="text"] {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-
-        button {
-            background-color: #004080;
-            color: #fff;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-
-        button:hover {
-            background-color: #003366;
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .headers div {
-                min-width: 120px;
-                padding: 6px 8px;
-                font-size: 14px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .headers div {
-                min-width: 100px;
-                padding: 5px 6px;
-                font-size: 12px;
-            }
-        }
-    </style>
-    <script>
-        function accessFile(event) {
-            event.preventDefault(); // Prevent form submission
-            const password = document.getElementById("passwordInput").value.trim();
-            const links = {
-                "2201010000200051": "https://drive.google.com/file/d/12k4vmYbK1t0acqvyieqibYZPu7G1TiFV/view?usp=sharing",
-                "2201010001010003": "https://drive.google.com/file/d/12mFCBNYmMbVcYaTYNFxZpYbWD4hwVeZs/view?usp=sharing",
-                "2201000000030010": "https://drive.google.com/file/d/12mxytytMqCQoh0lH5gBj0OH320jV7syo/view?usp=sharing",
-                "2201010000030014": "https://drive.google.com/file/d/12nn7PSp38o6Xd9HlHAOMj2wPAgaqhhuJ/view?usp=sharing",
-                "2101010000200015": "https://drive.google.com/file/d/12oVxaKPGTbMRXjZ0skwk54CvsRGKfZpT/view?usp=sharing",
-                "2201010001050007": "https://drive.google.com/file/d/12oWomAZf8YndlTWV9mCYkYEr-4DZXa9V/view?usp=sharing",
-                "2201010000200050": "https://drive.google.com/file/d/12odxf2XP_uQqD_aL5XQzZZ3j1hqc_SH3/view?usp=sharing",
-                "2201010000030008": "https://drive.google.com/file/d/12pGHp2UEZS_r6kjUJ_Z0dbK4hDV7gB2C/view?usp=sharing",
-                "2201010000200035": "https://drive.google.com/file/d/12pbeiYC3isLLwnVx0LuXyzst_ZPGAF_Z/view?usp=sharing",
-                "2201010000200005": "https://drive.google.com/file/d/12riPBR06lwbsSInPbyJgDXqTlIYmuOxu/view?usp=sharing",
-                "2201005000610019": "https://drive.google.com/file/d/12rmIDsYkTN43Bmg8bp2GsW7nbaIJ_bd2/view?usp=sharing",
-                "2201010000200048": "https://drive.google.com/file/d/12rmQty6_7FBT6kvQ3UBJxfzVtJFskMTs/view?usp=sharing",
-                "2201000000610012": "https://drive.google.com/file/d/12sE0ZH75ZGrxeh8unaQ5_fsNSciothMU/view?usp=sharing",
-                "2201013000500033": "https://drive.google.com/file/d/12tN7Eni2IR1llrrBcPrAdksfZCCZn9gt/view?usp=sharing",
-                "2201002000630039": "https://drive.google.com/file/d/12tiOviloB5B_NcWvEk_NGyALGP9eKe4p/view?usp=sharing",
-                "2201010000200044": "https://drive.google.com/file/d/12tmM1FP0xPD7LVFudN93OMF3jzzKKb22/view?usp=sharing",
-                "2201010000200053": "https://drive.google.com/file/d/12u0b1ASK4vNSLNm24vavRPlIh0LgNsyL/view?usp=sharing",
-                "2201001001010019": "https://drive.google.com/file/d/12u6rDW8OWiKk8ZNW_VItr2S1Z_sJOP_e/view?usp=sharing",
-                "2201013000470005": "https://drive.google.com/file/d/12uL3lP4ce948QP4YNlcaMiMuoWqplmiL/view?usp=sharing",
-                "2201000000610024": "https://drive.google.com/file/d/12waGgH5uZqX8JKhs21nNqOLallTU--mz/view?usp=sharing",
-                "2201013001730007": "https://drive.google.com/file/d/12xi3LjNY5RMfrOWOaniJ4bQdqYzmzi1b/view?usp=sharing",
-                "2201000000610002": "https://drive.google.com/file/d/12xk43NJ1gT9yEpcSCVcCXVThAiX3a0xW/view?usp=sharing",
-                "2201010000200038": "https://drive.google.com/file/d/12yOhxpPkGnhqUTEgZSQm3SYqXzP11JTl/view?usp=sharing",
-                "2201000000610021": "https://drive.google.com/file/d/12z3zESvCUozIZ6lYpnxCXoLfKtBMAVFr/view?usp=sharing",
-                "2201000000930036": "https://drive.google.com/file/d/12ze0uYLeqUhL7n4o2R7q_iqbQHp4Heym/view?usp=sharing",
-                "2201010001050005": "https://drive.google.com/file/d/13-hRaFOaoS_LNiNohFOtbG1Dxk8eOClx/view?usp=sharing",
-                "2201010001910050": "https://drive.google.com/file/d/1316AyPsR9XrLNsHyMnA6YUoDB6DXPsOO/view?usp=sharing",
-                "2201010001050012": "https://drive.google.com/file/d/131VDvHJPqKZkxi8oe0coJ3dumwflzSZq/view?usp=sharing",
-                "2201010001010001": "https://drive.google.com/file/d/132jCVQlu5tJVSaZNMlmaJ2v7IO0sa0Jm/view?usp=sharing",
-                "2201000000030006": "https://drive.google.com/file/d/1337KJQf_CmcB1QyfNbPzZxjInFzAgVop/view?usp=sharing",
-                "2201000001050040": "https://drive.google.com/file/d/133GJ-5NGjY0nDMND3SNQ6Vx-LPVoqwaN/view?usp=sharing",
-                "2201010001010039": "https://drive.google.com/file/d/133t4dGiXufolnXELmSkPQGorhuv5ViQN/view?usp=sharing",
-                "2201000001050006": "https://drive.google.com/file/d/134Dy1DlQVcDs41cWwaDHqfq_Ov6YlwWP/view?usp=sharing",
-                "2201000001050034": "https://drive.google.com/file/d/134Gv5twM-mg2TZEnFBRQC8PBNzwZ8Ke3/view?usp=sharing",
-                "2201000000900057": "https://drive.google.com/file/d/135ZdtsJlhgBgut5jzy9tcTuVunIVzrks/view?usp=sharing",
-                "2201010001050002": "https://drive.google.com/file/d/1360JDLxICnRy3zkAvR8NvZXwGQADMfLf/view?usp=sharing",
-                "2201010001050001": "https://drive.google.com/file/d/136u7ENBn0BI_60zwvVeIEl-Z9RBzxzWD/view?usp=sharing",
-                "2201010001160068": "https://drive.google.com/file/d/137fyu_FSOZALrgM_AUBzsXbTZAkN3jPa/view?usp=sharing",
-                "2201000001160003": "https://drive.google.com/file/d/138NTDp90GOdTF3dTAHew9nNqA2Zn2luk/view?usp=sharing",
-                "2201000000900038": "https://drive.google.com/file/d/139BMidIg_kcrhmZYMXExL1edEMBz7xv_/view?usp=sharing",
-                "2201000001010041": "https://drive.google.com/file/d/139Q3dVzqIKtZjvLw1HOuBVaYzaaEFDR0/view?usp=sharing",
-                "2201000001050024": "https://drive.google.com/file/d/139Qb6plxQUne6uRo2Cgg5_BmkDqjeeYx/view?usp=sharing",
-                "2201000000610031": "https://drive.google.com/file/d/13ABBGbpAKuwRgObuxI0bNmoqDDMM8KxO/view?usp=sharing",
-                "2201000001050023": "https://drive.google.com/file/d/13AKhhfUsHXCSIaj1vs2qEan-kMyheHg6/view?usp=sharing",
-                "2201000001050033": "https://drive.google.com/file/d/13Av0F-ZeB8wCvgRlXHZ_00QD3oq7S-U2/view?usp=sharing",
-                "2201000000930054": "https://drive.google.com/file/d/13CQ6S1scyS5nWqfQCUwC27Yd1y9Wo266/view?usp=sharing",
-                "2201000000610010": "https://drive.google.com/file/d/13Ci4nFfKgJNWr2YibehwNrYqrubydCHc/view?usp=sharing",
-                "2201010001010010": "https://drive.google.com/file/d/13DdovRk6mPI6yeV4NqYVTLi4bwrgj2QI/view?usp=sharing",
-                "2201010001010007": "https://drive.google.com/file/d/13E06xzzV4K-T44vXsFJr6cDbCP_4N5ew/view?usp=sharing",
-                "2201010000790042": "https://drive.google.com/file/d/13ELgBpaBlLgJhVcCpwZFMfiCtU0QbZTr/view?usp=sharing",
-                "2201000001050018": "https://drive.google.com/file/d/13ENpekNe05-3M_jSpqWUTK5oWrMV0JmK/view?usp=sharing",
-                "2201013001760001": "https://drive.google.com/file/d/13EvXXqQ1Zb2B7s-fhLwZgAdZL1MGS5Fi/view?usp=sharing",
-                "2201000001000041": "https://drive.google.com/file/d/13F-4XfDWe6KsNA1KuaxEM34pgRCfz_D7/view?usp=sharing",
-                "2201008000030012": "https://drive.google.com/file/d/13FCT2FLrrP_grYWbxwmz2da7H653c-TA/view?usp=sharing",
-                "2201010000790043": "https://drive.google.com/file/d/13FjbugiFsyEnmqYKG4AvVOBUhK-FT4Dw/view?usp=sharing",
-                "2201010000900028": "https://drive.google.com/file/d/13FkJs0CPcDBUjbLguM5SRnxUhC4IDk8S/view?usp=sharing",
-                "2201010000900053": "https://drive.google.com/file/d/13FpjDIIFR7lQNUVbf7UJyy8Y06NtFvRD/view?usp=sharing",
-                "2201002001050029": "https://drive.google.com/file/d/13FwzAozB83IzPD-n69_UnEwp80PjcmOx/view?usp=sharing",
-                "2201000000790023": "https://drive.google.com/file/d/13G-UgjZwNgv_PSguGk5u4mgGxQlmKjwR/view?usp=sharing",
-                "2201000000900011": "https://drive.google.com/file/d/13GG2_FKvg0roA512dFrP_XiHKP8rGX-p/view?usp=sharing",
-                "2201000001050026": "https://drive.google.com/file/d/13GQZx4AHBCOqMIb8vOb_Wl5SKkIupyyw/view?usp=sharing",
-                "2201015000790049": "https://drive.google.com/file/d/13Glk6srRK8x3KXA68PWPrLwnvRMrJeE2/view?usp=sharing",
-                "2201000001330030": "https://drive.google.com/file/d/13HBIzurji00pdWO8AwbfVyPxamZYeIOy/view?usp=sharing",
-                "2201010001170005": "https://drive.google.com/file/d/13HDFfR7a469QRmL-SdTMfSWhvkHoRvsH/view?usp=sharing",
-                "2201010001170016": "https://drive.google.com/file/d/13JGnndU7TUmr9f7h_NCsNHFB_Sz3T5v3/view?usp=sharing",
-                "2201000000790025": "https://drive.google.com/file/d/13Js3DfG_Gtzq9ha7tqATLMSy1iiNsSJ9/view?usp=sharing",
-                "2201005000630014": "https://drive.google.com/file/d/13KHhpYEBbl_VzA1fu59TIO9r39EA9_3u/view?usp=sharing",
-                "2201000001010058": "https://drive.google.com/file/d/13KPy6T_d8sBSb1pdVo0Ex6JVFq8ZAD5E/view?usp=sharing",
-                "2201000000790051": "https://drive.google.com/file/d/13KhwxNGGETvO5fHLlCG6pcaPxooI5l2w/view?usp=sharing",
-                "2201000000900059": "https://drive.google.com/file/d/13LHw1cFEoazaHxAJNe6b9T9_H3CS-7YA/view?usp=sharing",
-                "2201010001170024": "https://drive.google.com/file/d/13LJtp0p9sSgYs8mBtvUrP5Lhl9YSe754/view?usp=sharing",
-                "2201010000790003": "https://drive.google.com/file/d/13LjH7UkI09w5ltSv-aF2YMEFyvmsTBSG/view?usp=sharing",
-                "2201003000030025": "https://drive.google.com/file/d/13MiJJV6zQFpQAv6n5EtDJQSHzir5cTxW/view?usp=sharing",
-                "2201013001170027": "https://drive.google.com/file/d/13NZHCQCzQbGZV6t_yxMdPaXwAIlBnFqx/view?usp=sharing",
-                "2201010000900046": "https://drive.google.com/file/d/13NwxwwvdTVJr_KS91WaF8IYFZodTg2Kb/view?usp=sharing",
-                "2201010000900002": "https://drive.google.com/file/d/13O21ivOzFG7Focs-ouJFu9fY9S68GOoE/view?usp=sharing",
-                "2201010001170001": "https://drive.google.com/file/d/13Oj4PGTI3Jn8A1n0LmSdd2Pgg_ytIws8/view?usp=sharing",
-                "2201008001010031": "https://drive.google.com/file/d/13PCdS6ZZqZFC3bL_vkEIav1cSeAxzhmD/view?usp=sharing",
-                "2201010001170017": "https://drive.google.com/file/d/13PCipb9ONueigOL8uoiAisq2K9ilggDf/view?usp=sharing",
-                "2201010000900061": "https://drive.google.com/file/d/13PzgDESzFhbTDuCY-DS16uG7K49MNv9g/view?usp=sharing",
-                "2201005001170038": "https://drive.google.com/file/d/13Q06cM0QJ1dUjCkJmIBpOIffcMl7PWWQ/view?usp=sharing",
-                "2201000000900034": "https://drive.google.com/file/d/13QM4W34fDN2ljm1DiCwj8dFOqyRbldx3/view?usp=sharing",
-                "2201000000610025": "https://drive.google.com/file/d/13QWnXzSGejRrTjeXCUrcTiS5VIBJeeqy/view?usp=sharing",
-                "2201010000540018": "https://drive.google.com/file/d/13Rh7sIxPIsGBCuU-RuJWrrPzPvdoKqGs/view?usp=sharing",
-                "2201000000610001": "https://drive.google.com/file/d/13S7u8PTbpJbCJ75QpAPf9_rf7Oj42VC1/view?usp=sharing",
-                "2201000001050021": "https://drive.google.com/file/d/13TW-XT9X7Rc81hkyAFsg1tocLtAqWPRI/view?usp=sharing",
-                "2201000001010055": "https://drive.google.com/file/d/13TyMbn1X0ff7d0XmAhLgcNA7lPhOHJ4l/view?usp=sharing",
-                "2201003000610005": "https://drive.google.com/file/d/13TzQZpCkzKyGUD9l4f7KsOi_9HTaoEiE/view?usp=sharing",
-                "2201000000900080": "https://drive.google.com/file/d/13V24Oaecy_pPv0F7q449Qy7bM8RziGmI/view?usp=sharing",
-                "2201000000900027": "https://drive.google.com/file/d/13VI_m7esYrMfVo7xnNIGSUhGcxPlAzHD/view?usp=sharing",
-                "2201010000200034": "https://drive.google.com/file/d/13VLT7Dt8w3TDWCMZOLyJ_DaG9JTHZmcN/view?usp=sharing",
-                "2201010000200029": "https://drive.google.com/file/d/13VSoZ_6dYOhQDy-IvsnsGR4K6-asmqWN/view?usp=sharing",
-                "2201010000500006": "https://drive.google.com/file/d/13VhyH3yTzNhRCHkrnnWMVMNLegh0U7OC/view?usp=sharing",
-                "2217000001260020": "https://drive.google.com/file/d/13VmM6TUlBl1YamjQuw_U83_3lQDgALEm/view?usp=sharing",
-                "2201013000030018": "https://drive.google.com/file/d/13WLKZ9faRKh6D7h1NqLKTWEQ_cz4aWRN/view?usp=sharing",
-                "2201000000610028": "https://drive.google.com/file/d/13WTMNRDxZ7QJ3SUliWmdZOhXmGiUFAAi/view?usp=sharing",
-                "2201000000900066": "https://drive.google.com/file/d/13WtlglNWtWUb1bA5b1UFCOUxbH7klCAf/view?usp=sharing",
-                "2201000000970077": "https://drive.google.com/file/d/13X6jrLpRFWeeO1fVjX1ONirZvfIIYV-o/view?usp=sharing",
-                "2201000000900017": "https://drive.google.com/file/d/13XpualLNGmoqTn8CylE_tGhem9CQv8wO/view?usp=sharing",
-                "2201010000030011": "https://drive.google.com/file/d/13YR4Z5czhMEVDhOkz4Pyg1MxtRbJhMXE/view?usp=sharing",
-                "2101010000540001": "https://drive.google.com/file/d/13Yd5G1A_o7OoTD32ROT6B9bbCLBBpCqR/view?usp=sharing",
-                "2201010000900049": "https://drive.google.com/file/d/13Z61TC7pFJN8NIO5Nzle2yAX-MPgo9MH/view?usp=sharing",
-                "2201000000900019": "https://drive.google.com/file/d/13ZmwQdwpJXcdQH67B8wO2Hk8lAqUCLaq/view?usp=sharing",
-                "2201003000300017": "https://drive.google.com/file/d/13Zwy20OWRAqylXb62KMn2bpfhjFuAH5G/view?usp=sharing",
-                "2201013000200013": "https://drive.google.com/file/d/13_-xRpqAk5kMPfQmMXw9AM5wg_-5oX93/view?usp=sharing",
-                "2201010000200009": "https://drive.google.com/file/d/13_CX4lrEXakOzaoCXM3kdQ_v_dRW0Jog/view?usp=sharing",
-                "2201000000610023": "https://drive.google.com/file/d/13_vE1qcfJZ5k4vWLU0L7UnBQCcGr_X92/view?usp=sharing",
-                "2201010000200019": "https://drive.google.com/file/d/13aFnJX50DYkZg6OZ5YOFjU9pc5Ik2hKU/view?usp=sharing",
-                "2201010000200014": "https://drive.google.com/file/d/13aQllnsv9RqEV8kU7xnbL0Hm2f7sT0mn/view?usp=sharing",
-                "2201000000610020": "https://drive.google.com/file/d/13aRPsQsn6VWuf59Aq3oSySAR-jWS5p1E/view?usp=sharing",
-                "2201000001010040": "https://drive.google.com/file/d/13b23f9hXS6on0VhpCxsuH43lf1Fe96fa/view?usp=sharing",
-                "2101000000470016": "https://drive.google.com/file/d/13bPbap0G5dW67_kM4c2I1mRrfUlYZ13_/view?usp=sharing",
-                "2201010000200045": "https://drive.google.com/file/d/13bfaVi8RyqqsOzSRpYFzkDDv99-hWP23/view?usp=sharing",
-                "2201010000200006": "https://drive.google.com/file/d/13bw-rptVo_koaEorPp1zuQ56sdQkWvtM/view?usp=sharing",
-                "2201000000630067": "https://drive.google.com/file/d/13bxLFGU8nsP0TcRLz81oSwUhrWQ6YtLP/view?usp=sharing",
-                "2201010000200016": "https://drive.google.com/file/d/13c1FPB942pujwyZhvDdKdVV4GaAvrq_P/view?usp=sharing",
-                "2201000000610029": "https://drive.google.com/file/d/13dXMp-yiopSprSFxHb5grLCVYiY05_Yu/view?usp=sharing",
-                "2201010001010036": "https://drive.google.com/file/d/13dapdgb-ng4rgQsvN9GA8S5drBKTz7sB/view?usp=sharing",
-                "2201003001010024": "https://drive.google.com/file/d/13dxFMmSEIGq6h8v6pPKgLhrq5iFL-Tio/view?usp=sharing",
-                "2201000001050022": "https://drive.google.com/file/d/13e3Dv-FwiWmZ2QiTsNtjv33JgkTXqGZ0/view?usp=sharing",
-                "2201010000200007": "https://drive.google.com/file/d/13eu6dEeKOK4_tCIb872yfB-xRb6i0d5S/view?usp=sharing",
-                "2201000000610015": "https://drive.google.com/file/d/13fTjKChJ127P7YiPonfZzHQZOxM5fJ5W/view?usp=sharing",
-                "2201010000200042": "https://drive.google.com/file/d/13fWayulHQeDDaby8BG-dy5zz-5t9Tc_r/view?usp=sharing",
-                "2201000000610009": "https://drive.google.com/file/d/13fjpXJivZFyKK3NJd-aolghNWztPlmJk/view?usp=sharing",
-                "2201000001050017": "https://drive.google.com/file/d/13fv-dRvV9SPU-c8-tEoUjWIduKoa9XPm/view?usp=sharing",
-                "2201010001050013": "https://drive.google.com/file/d/13hHNKIZ_9tYBoKrOEY0QVTb9fOkBR1ZD/view?usp=sharing",
-                "2201010001050008": "https://drive.google.com/file/d/13hL08e76GgmZcsvxgcUvmgapXOeVGR8k/view?usp=sharing",
-                "2201000000610011": "https://drive.google.com/file/d/13i244WHEvcfpKj7S5YMRbD6fJL7N2zSK/view?usp=sharing",
-                "2201002001010034": "https://drive.google.com/file/d/13i4OqXkonlin4TkkjXPHuYILQOJ4xkf6/view?usp=sharing",
-                "2201010000200018": "https://drive.google.com/file/d/13iSJIdN27RaloA8Xhf4Ggdrs49YFWg3u/view?usp=sharing",
-                "2201000000540016": "https://drive.google.com/file/d/13izP1qZm8gbl7gHrGH0eFRJhcMf5Na5V/view?usp=sharing",
-                "2201010000200028": "https://drive.google.com/file/d/13j7aLMs95PlNYeVoDBN_-2FP3DgnndY4/view?usp=sharing",
-                "2201003000610008": "https://drive.google.com/file/d/13jLcBlPQDA5oo7kK_R_TU3hbX7PoycZQ/view?usp=sharing",
-                "2201010000200012": "https://drive.google.com/file/d/13jNeP0FVvU67FPaT0gQwzeSC7zVY2OTf/view?usp=sharing",
-                "2201010000200052": "https://drive.google.com/file/d/13jasoZ8uISMLSUzRVyqUDIWpccHAUzL-/view?usp=sharing",
-                "2201010000200031": "https://drive.google.com/file/d/13k-Qiza-7ziJ_0g9qqUlDDfyiGNfFH7Y/view?usp=sharing",
-                "2201000000610014": "https://drive.google.com/file/d/13lBR-y2rNuqchiiMAWSGwfLCZuycr4xY/view?usp=sharing",
-                "2201013001760002": "https://drive.google.com/file/d/13mZ7vBAyp4SNsTVdduVBtXRWI2yBb-9Z/view?usp=sharing",
-                "2201010001050032": "https://drive.google.com/file/d/13mmTKeiUq8cTfK3MkQNWWM0ZyZijyTvq/view?usp=sharing",
-                "2101010001170032": "https://drive.google.com/file/d/13mx-LqC4I2KFnIRel8-RG-xYckP84ek2/view?usp=sharing",
-                "2201010001050011": "https://drive.google.com/file/d/13n-MhQwZf0TsFCCBNlLALPC3h_YVnJ3J/view?usp=sharing",
-                "2201010000200026": "https://drive.google.com/file/d/13nBMFisJSeILCA7gMN2JgpSTqL1GOrGv/view?usp=sharing",
-                "2201010001050014": "https://drive.google.com/file/d/13nokIsGsrCzIT5nl9Oj2cmcGPS02YEaf/view?usp=sharing",
-                "2201010000900037": "https://drive.google.com/file/d/13nwqq_DE4-2aqXQ0HTFB4KvAGJHzLt4b/view?usp=sharing",
-                "2201000001050039": "https://drive.google.com/file/d/13oJGXwHlhMDwsm0xhDbc69odCT8tetIH/view?usp=sharing",
-                "2201013001910052": "https://drive.google.com/file/d/13oTucHwRrCimh3SlOKRU600IbG1eQGn9/view?usp=sharing",
-                "2201013000200017": "https://drive.google.com/file/d/13pj6Z1hVa9cHe5Vn7WK6lS7e3bA4wO_0/view?usp=sharing",
-                "2201010000200021": "https://drive.google.com/file/d/13r5E6EBR0dNREPAFpYFyEhxAm2V1__eS/view?usp=sharing",
-                "2201010001050037": "https://drive.google.com/file/d/13rARBLbJQh18kWIdU2sR0__TZrIos30V/view?usp=sharing",
-                "2201000000610006": "https://drive.google.com/file/d/13sAewzuTZ8YmuihPVEG3-rcq4Pd6iG-g/view?usp=sharing",
-                "2201010001050028": "https://drive.google.com/file/d/13sJ7rQ4su6Owrq9O4vKkpxdbI_0TKlzm/view?usp=sharing",
-                "2201010001050004": "https://drive.google.com/file/d/13t7F4llX_CZh6jONpKWgjvQKtNwWusoc/view?usp=sharing",
-                "2201010001050031": "https://drive.google.com/file/d/13tJlby3vhQLCrJJPVPrCYEJb0JqNws1m/view?usp=sharing",
-                "2201013000470016": "https://drive.google.com/file/d/13tv9j-MPhU9wnlYdCT0KScU6vT1ePmuv/view?usp=sharing",
-                "2201010000200004": "https://drive.google.com/file/d/13udBslEu6Jix05OXWYsmP78OZwhUwH9J/view?usp=sharing",
-                "2201010000200020": "https://drive.google.com/file/d/13vO_dfX74-MkwW9rpcj5THzvWKJCEr9U/view?usp=sharing",
-                "2201000000900039": "https://drive.google.com/file/d/13vawY5WueeJMSwYumMcdtjZ8U37vJaWO/view?usp=sharing",
-                "2201010001630002": "https://drive.google.com/file/d/13vzCwKd1j1F0m-9awiE6pKolF9Z9HXzO/view?usp=sharing",
-                "2201003000610007": "https://drive.google.com/file/d/13wBV10YKlIhF8YBl_oWBD4tYrMD1XekD/view?usp=sharing",
-                "2201010000200008": "https://drive.google.com/file/d/13wJixVFoSSYkUk-UzIsyTiTCanI7VsU8/view?usp=sharing",
-                "2201010000030004": "https://drive.google.com/file/d/13wRrfqjRYj7cOOYvHoymTVyLW5IClBSH/view?usp=sharing",
-                "2201010000200047": "https://drive.google.com/file/d/13wV_DMxkJ44eI06q6zYfWAwjmtAWJx-6/view?usp=sharing",
-                "2201000000790053": "https://drive.google.com/file/d/13wXUoTg9SUcvi3YsWo21Hy_sCoeLT6aV/view?usp=sharing",
-                "2201000000790047": "https://drive.google.com/file/d/13x1acjaFoayb0lDoMMKkfiZ8s-OSkhj2/view?usp=sharing",
-                "2239000003320052": "https://drive.google.com/file/d/13xjTGFSdLqyioNkhNXeDZw-jK9Ovarv7/view?usp=sharing",
-                "2001000000610003": "https://drive.google.com/file/d/13xwZGhh8Fn9-fhQZz8flqSTX4oglfpCc/view?usp=sharing",
-                "2201010000500005": "https://drive.google.com/file/d/13y2bzUfKtFlEVEG-Gyp-mZmXnYgx1yyr/view?usp=sharing",
-                "2203013000170003": "https://drive.google.com/file/d/13yCY-4TCg6Jd8gt00vP-woj_dbaXP_IB/view?usp=sharing",
-                "2201000000900044": "https://drive.google.com/file/d/13yXsnbn7IrSnvl_ohinbO6XmvGLTrpaD/view?usp=sharing",
-                "2201000000900018": "https://drive.google.com/file/d/13z5hq_IyUIftW6EErKpWodGZGt0Hvn94/view?usp=sharing",
-                "2201013001910043": "https://drive.google.com/file/d/14-ChCUPZd_hA8cIyM1uv4beQs3UnJj7g/view?usp=sharing",
-                "2201010001630004": "https://drive.google.com/file/d/14-IQZoKhp2Ff-LS_AOT3IZUiCwsXF-XA/view?usp=sharing",
-                "2201013001760006": "https://drive.google.com/file/d/14-K6Zi2MmTfk5OiJ21xIzuJ5W3vpWzEZ/view?usp=sharing",
-                "2201010000200022": "https://drive.google.com/file/d/14-yWn-LlPNbyWDlxnonEETJbPOTxQS30/view?usp=sharing",
-                "2201010000200027": "https://drive.google.com/file/d/140gW3pG9SfjQyuwJb6xRNg5k95BLGVUE/view?usp=sharing",
-                "2201000000790052": "https://drive.google.com/file/d/142_GrkG5_5AN1vcBRvdt0PRsTFqwusQY/view?usp=sharing",
-                "2201010000900005": "https://drive.google.com/file/d/143DI8-RsGekFDYD-YDPs_SFBPLE7cpkH/view?usp=sharing",
-                "2201000000610036": "https://drive.google.com/file/d/143HPX-pHdinKLci4DZpFBIYAkOp2WCoF/view?usp=sharing",
-                "2201003000030009": "https://drive.google.com/file/d/143y73N_rWpCYtjD5Wj2pykQP1b1nNcqO/view?usp=sharing",
-                "2201010000200046": "https://drive.google.com/file/d/144A8oaW3dHrIeb6IzAvMh1ffX1rzwEaU/view?usp=sharing",
-                "2201000000030016": "https://drive.google.com/file/d/144yW7xQwubZbh7iiqVJ6UTSK2FKFNwpS/view?usp=sharing",
-                "2201012000200023": "https://drive.google.com/file/d/145hqfQK2idJDnxKULT10mdXVaavwFIQl/view?usp=sharing",
-                "2201010000900068": "https://drive.google.com/file/d/145ti7hRGSExCF_ZOV1WGUkX04FrUr-_U/view?usp=sharing",
-                "2201003001420021": "https://drive.google.com/file/d/146Aw299wDMauolJxJ0Axst6hitfmayIe/view?usp=sharing",
-                "2001010000200045": "https://drive.google.com/file/d/146lAhA7lu1_zJKIwZoUeryuJ4J_-dZiu/view?usp=sharing",
-                "2201000001050036": "https://drive.google.com/file/d/146q8JutY_q1vtHUwo4hiJefudma3FBi4/view?usp=sharing",
-                "2401210000610001": "https://drive.google.com/file/d/147DPqB--yE5MlV46rGp3fvNTojPl7Hnu/view?usp=sharing",
-                "2201010000120006": "https://drive.google.com/file/d/147dE4uFLh4T45LrBG0psO6qeidEVEQEb/view?usp=sharing",
-                "2201010001750029": "https://drive.google.com/file/d/148bhxQPFqCrFOuMP6oHGrH3Pqnh7wL0x/view?usp=sharing",
-                "2203003000170076": "https://drive.google.com/file/d/148wp5A60jpnIjQnZ7MXrJPc_F4vfCod4/view?usp=sharing"
-                // Add more links as needed
-            };
-
-            // Input validation: Ensure 16-digit number
-            const isValidRegistrationNumber = (regNum) => /^\d{16}$/.test(regNum);
-
-            if (!isValidRegistrationNumber(password)) {
-                alert("Please enter a valid 16-digit board registration number.");
-                return;
-            }
-
-            if (links[password]) {
-                window.open(links[password], '_blank');
-            } else {
-                alert("Invalid board registration number. Please try again.");
-            }
-        }
-    </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>e-Educational</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://pay.google.com/gp/p/js/pay.js" async></script>
+  <script src="index.js" defer></script>
 </head>
 <body>
-    <header>
-        <div class="logo-container">
-            <img src="https://raw.githubusercontent.com/ShGulfam/protected-html/main/Copy%20of%20logo.png" alt="HSS Shangus Logo">
-        </div>
-        <h1>Admission & Examination Section - HSS Shangus</h1>
-    </header>
-    <main>
-        <h2>Know Your Examination Details of class 11th (2024-25)</h2>
+  <header>
+    <h1>e-Educational</h1>
+    <p>Explore our selection of computers, peripherals, and software.</p>
+  </header>
+  
+  <!-- Product Section -->
+  <section id="products">
+    <h2>Available Products</h2>
 
-        <!-- Important Notice v1 -->
-<!--         <div class="important-notice">
-            <strong>Important:</strong>
-            <ul>
-                <li>Deadline: Tomorrow by 🕚 11:00 AM</li>
-                <li>For any serious issues, contact Mushtaq Sir before the deadline.</li>
-                <li>After 11:00 AM, forms and fees will be submitted. No changes can be made.</li>
-                <li>You are responsible for any discrepancies.</li>
-            </ul>
-            ⚠ **Please take this seriously to avoid any complications.**
-        </div> -->
-        
-        <!-- Important Notice v2 -->
-        <div class="important-notice">
-            <strong>Important:</strong>
-            <ul>
-                <li>Your exam forms and fees have been submitted to JKBOSE.</li>
-                <li>No changes can be made to the submitted information.</li>
-            </ul>
-            ⚠ **Download a copy for your records (no need to print).**
-        </div>
+    <!-- Product 1: High-Performance Laptop -->
+    <div class="product">
+      <img src="https://raw.githubusercontent.com/ShGulfam/Dynamic/refs/heads/main/computer.png" alt="High-Performance Laptop">
+      <h3>High-Performance Laptop</h3>
+      <p class="price">Price: $1200 <span class="discount">Save 10%</span></p>
+      <p class="stock-status">In Stock</p>
+      <p class="description">A high-performance laptop with powerful specs to handle any task, from office work to graphic design.</p>
+      <ul class="specs">
+        <li>Processor: Intel Core i7</li>
+        <li>RAM: 16GB</li>
+        <li>Storage: 512GB SSD</li>
+        <li>Display: 15.6" Full HD</li>
+      </ul>
+      <p class="reviews">⭐️⭐️⭐️⭐️☆ (4.5) - 120 reviews</p>
+      <button onclick="openOrderPopup('High-Performance Laptop', 1200)">Order Now</button>
+      <button onclick="addToCart('High-Performance Laptop')">Add to Cart</button>
+    </div>
 
+    <!-- Product 2: Wireless Keyboard and Mouse Combo -->
+    <div class="product">
+      <img src="https://raw.githubusercontent.com/ShGulfam/Dynamic/refs/heads/main/mouse.png" alt="Wireless Keyboard and Mouse Combo">
+      <h3>Wireless Keyboard and Mouse Combo</h3>
+      <p class="price">Price: $60</p>
+      <p class="stock-status">In Stock</p>
+      <p class="description">A sleek and compact wireless keyboard and mouse combo, perfect for productivity on the go.</p>
+      <ul class="specs">
+        <li>Connection: Wireless (Bluetooth)</li>
+        <li>Battery Life: Up to 12 months</li>
+        <li>Compatibility: Windows, macOS</li>
+      </ul>
+      <p class="reviews">⭐️⭐️⭐️⭐️☆ (4.0) - 89 reviews</p>
+      <button onclick="openOrderPopup('Wireless Keyboard and Mouse Combo', 60)">Order Now</button>
+      <button onclick="addToCart('Wireless Keyboard and Mouse Combo')">Add to Cart</button>
+    </div>
 
-        
-        <!-- Header Labels in Single Line v1 -->
-<!--         <div class="headers-container">
-            <div class="headers">
-                <div>Class Roll Number</div>
-                <div>Image</div>
-                <div>Name</div>
-                <div>Parentage</div>
-                <div>Date of Birth</div>
-                <div>Gender</div>
-                <div>Category</div>
-                <div>Religion</div>
-                <div>Disability</div>
-                <div>Fee (to Board)</div>
-                <div>Class</div>
-                <div>Approval (by School)</div>
-                <div>RR No</div>
-                <div>Stream</div>
-                <div>Subjects</div>
-            </div>
-        </div> -->
+    <!-- Product 3: Antivirus Software (1-Year Subscription) -->
+    <div class="product">
+      <img src="https://raw.githubusercontent.com/ShGulfam/Dynamic/refs/heads/main/antivirus.png" alt="Antivirus Software">
+      <h3>Antivirus Software (1-Year Subscription)</h3>
+      <p class="price">Price: $40 <span class="discount">Save 5%</span></p>
+      <p class="stock-status">Limited Stock</p>
+      <p class="description">Protect your computer from viruses, malware, and online threats with a 1-year subscription to top-rated antivirus software.</p>
+      <ul class="specs">
+        <li>License: 1-Year Subscription</li>
+        <li>Compatibility: Windows, macOS</li>
+        <li>Features: Real-time protection, Safe browsing, etc.</li>
+      </ul>
+      <p class="reviews">⭐️⭐️⭐️⭐️⭐️ (5.0) - 230 reviews</p>
+      <button onclick="openOrderPopup('Antivirus Software', 40)">Order Now</button>
+      <button onclick="addToCart('Antivirus Software')">Add to Cart</button>
+    </div>
 
+    <!-- Product 4: External Hard Drive (1TB) -->
+    <div class="product">
+      <img src="https://raw.githubusercontent.com/ShGulfam/e-Educational/refs/heads/main/external_hdd.png" alt="External Hard Drive">
+      <h3>External Hard Drive (1TB)</h3>
+      <p class="price">Price: $80</p>
+      <p class="stock-status">In Stock</p>
+      <p class="description">A reliable 1TB external hard drive to safely store and back up all your important files and data.</p>
+      <ul class="specs">
+        <li>Storage Capacity: 1TB</li>
+        <li>Interface: USB 3.0</li>
+        <li>Compatibility: Windows, macOS, Linux</li>
+      </ul>
+      <p class="reviews">⭐️⭐️⭐️⭐️☆ (4.3) - 150 reviews</p>
+      <button onclick="openOrderPopup('External Hard Drive (1TB)', 80)">Order Now</button>
+      <button onclick="addToCart('External Hard Drive (1TB)')">Add to Cart</button>
+    </div>
 
-         <!-- Header Labels in Single Line v2 -->
-        <div class="headers-container">
-            <div class="headers">
-                <div>Class Roll Number</div>
-                <div>Image</div>
-                <div>Name</div>
-                <div>Parentage</div>
-                <div>Date of Birth</div>
-                <div>Gender</div>
-                <div>Category</div>
-                <div>Religion</div>
-                <div>Disability</div>
-                <div>Stream</div>
-                <div>Subjects</div>
-            </div>
-        </div>
+      </section>
 
-        <!-- Form for Registration Number -->
-        <form onsubmit="accessFile(event)">
-            <div class="form-group">
-                <label for="passwordInput">Enter Your 16-Digit Board Registration Number:</label>
-                <input type="text" id="passwordInput" name="passwordInput" placeholder="e.g., 2201000000030010" maxlength="16" required>
-            </div>
-            <button type="submit">Access Your Details</button>
-        </form>
-    </main>
+  <!-- Order Form Popup Modal -->
+  <div id="order-popup" class="popup">
+    <div class="popup-content">
+      <span class="close-btn" onclick="closeOrderPopup()">&times;</span>
+      <h2>Order Form</h2>
+      <form id="form">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <input type="text" name="address" placeholder="Delivery Address" required>
+        <input type="hidden" name="product" id="product">
+        <input type="hidden" name="price" id="price">
+        <button type="submit">Submit Order</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Help Section -->
+  <section id="help">
+    <h2>Help</h2>
+    <p>Need assistance? Browse our FAQ section or contact support.</p>
+    <p>FAQ: 
+      <a href="#" onclick="showPopup('Shipping Information: Our shipping times are 5-7 business days.')">Shipping Information</a> | 
+      <a href="#" onclick="showPopup('Returns & Refunds: We offer a 30-day return policy on all items.')">Returns & Refunds</a> | 
+      <a href="#" onclick="showPopup('Payment Methods: We accept credit cards, debit cards, and UPI payments.')">Payment Methods</a>
+    </p>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p>Email: e.educational.24@gmail.com; sheikhgulfam91@gmail.com</p>
+    <p>Phone: +91-9469050879/9469050879</p>
+    <p>Address: Hardu-Shichen Dialgam, Anantnag Kmr.</p>
+  </section>
+
+  <!-- Footer Section -->
+  <footer>
+    <p>© 2023 e-Educational. All rights reserved.</p>
+  </footer>
+
+  <!-- Popup for Help Links -->
+  <div id="popup" class="popup">
+    <div class="popup-content">
+      <span class="close-btn" onclick="closePopup()">&times;</span>
+      <p id="popup-text"></p>
+    </div>
+  </div>
+
+  <script>
+    function openOrderPopup(productName, productPrice) {
+      document.getElementById('product').value = productName;
+      document.getElementById('price').value = productPrice;
+      document.getElementById('order-popup').style.display = 'flex';
+    }
+
+    function closeOrderPopup() {
+      document.getElementById('order-popup').style.display = 'none';
+    }
+
+    function showPopup(message) {
+      document.getElementById('popup-text').innerText = message;
+      document.getElementById('popup').style.display = 'flex';
+    }
+
+    function closePopup() {
+      document.getElementById('popup').style.display = 'none';
+    }
+  </script>
 </body>
 </html>
