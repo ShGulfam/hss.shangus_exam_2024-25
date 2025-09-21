@@ -13,14 +13,12 @@
             margin: 0;
             padding: 0;
         }
-
         body {
             font-family: 'Roboto', sans-serif;
             background-color: #f9f9f9;
             color: #333;
             line-height: 1.6;
         }
-
         /* Header styling */
         header {
             background-color: #00509e;
@@ -29,17 +27,14 @@
             text-align: center;
             position: relative;
         }
-
         header img {
             max-width: 150px;
             margin-bottom: 15px;
         }
-
         header h1 {
             font-size: 2em;
             margin-bottom: 10px;
         }
-
         /* Main content styling */
         main {
             padding: 30px 20px;
@@ -49,20 +44,17 @@
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
             border-radius: 10px;
         }
-
         main h2 {
             text-align: center;
             color: #00509e;
             margin-bottom: 10px;
         }
-
         main h3 {
             text-align: center;
             color: #333;
             margin-bottom: 30px;
             font-weight: 400;
         }
-
         /* Important Notice styling */
         .important-notice {
             background-color: #ffefc5;
@@ -73,38 +65,31 @@
             display: flex;
             align-items: flex-start;
         }
-
         .important-notice img {
             width: 30px;
             margin-right: 15px;
         }
-
         .important-notice div {
             flex: 1;
         }
-
         .important-notice strong {
             display: block;
             margin-bottom: 10px;
             color: #a67c00;
         }
-
         .important-notice ul {
             list-style-type: disc;
             margin-left: 20px;
         }
-
         /* Form styling */
         .form-group {
             margin-bottom: 25px;
         }
-
         label {
             display: block;
             font-weight: 700;
             margin-bottom: 8px;
         }
-
         input[type="text"] {
             width: 100%;
             padding: 12px 15px;
@@ -112,13 +97,11 @@
             border-radius: 5px;
             font-size: 1em;
         }
-
         input[type="text"]:focus {
             border-color: #00509e;
             outline: none;
             box-shadow: 0 0 5px rgba(0,80,158,0.5);
         }
-
         button {
             width: 100%;
             background-color: #00509e;
@@ -130,11 +113,9 @@
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
-
         button:hover {
             background-color: #003f7d;
         }
-
         /* Footer styling */
         footer {
             text-align: center;
@@ -145,212 +126,341 @@
             font-size: 0.9em;
             border-top: 1px solid #e0e0e0;
         }
-
         /* Responsive adjustments */
         @media (max-width: 600px) {
             header h1 {
                 font-size: 1.5em;
             }
-
             main {
                 padding: 20px;
             }
-
             .important-notice {
                 flex-direction: column;
                 align-items: flex-start;
             }
-
             .important-notice img {
                 margin-bottom: 10px;
             }
         }
     </style>
     <script>
+        // Large mapping object with all roll numbers and their corresponding URLs
+        const rollNumberLinks = {
+            "2301013000030029": "https://drive.google.com/file/d/1oc7vE84O9SEi0tanUhXpYeXgWvnpUJ-m/view?usp=drivesdk",
+            "2301000001210002": "https://drive.google.com/file/d/1ZwEW65-yPijW8NwZM81Q8qbW9KKo3PhD/view?usp=drivesdk",
+            "2301000000030006": "https://drive.google.com/file/d/1t_V2ZYkiufGWJ9O6CboEJpRaUGheKBnP/view?usp=drivesdk",
+            "2301005001910005": "https://drive.google.com/file/d/1U1EagU8Nt-6oLUULO53200aZbDlSCpnP/view?usp=drivesdk",
+            "2301010001050010": "https://drive.google.com/file/d/1Jn9asGwekwTRLMU4YYlIQ-S5HyC_vxbK/view?usp=drivesdk",
+            "2301000001000020": "https://drive.google.com/file/d/1Bw3VkkGk6yK9hxkLwJ9_vF_1x6c2P_E0/view?usp=drivesdk",
+            "2301000001000019": "https://drive.google.com/file/d/1_cdvhU64_f1cslROyxKVrpGU9znDNK-G/view?usp=drivesdk",
+            "2301010000030018": "https://drive.google.com/file/d/12b_EjdizpCd-jCkLVnoe6Se0yyIGL3gb/view?usp=drivesdk",
+            "2301010000030003": "https://drive.google.com/file/d/1GNXvVg-4t8-N7_ZOtpElRaxNRhviueka/view?usp=drivesdk",
+            "2301010000500012": "https://drive.google.com/file/d/1mZ5EKCQdmW26MiyiKA2q7Bf2DmMoQOxA/view?usp=drivesdk",
+            "2301010000500006": "https://drive.google.com/file/d/18UQCaGuX_Xg2gFhQRzHFflC3KOw4pGUk/view?usp=drivesdk",
+            "2301012001220001": "https://drive.google.com/file/d/1S3ObIVv5ljT0WBqkcpnINyY6OpVJbEIA/view?usp=drivesdk",
+            "2301018001220005": "https://drive.google.com/file/d/1GQkglr8yZcDBhIBgJez5FYUVbWEvuiwN/view?usp=drivesdk",
+            "2301010001220002": "https://drive.google.com/file/d/1oDq05wsn_gMaihvZ-oP9SPbGclqhD-kK/view?usp=drivesdk",
+            "2301010001050001": "https://drive.google.com/file/d/1LF3aYvdk13UGi2-vbWhG2_AAcYM9JxsR/view?usp=drivesdk",
+            "2301000001050003": "https://drive.google.com/file/d/181w_dI0g8JFXh5X8tPG4ZX-epsqC-oy9/view?usp=drivesdk",
+            "2301003001050003": "https://drive.google.com/file/d/1m1TAybpKMouQLAjZ70II_5bgrCO9MSDr/view?usp=drivesdk",
+            "2301000000610008": "https://drive.google.com/file/d/1o3YqdBRY-xG3iKywM8M9Mi90pgyXCugH/view?usp=drivesdk",
+            "2301000000030022": "https://drive.google.com/file/d/1-l9iwadCOGMIm6uIoG0_5lv7Os4qH_Sa/view?usp=drivesdk",
+            "2301000000030008": "https://drive.google.com/file/d/1pl-eZ3VaDaMfapuzAcRwI2-WamtrO06/view?usp=drivesdk",
+            "2301013000500024": "https://drive.google.com/file/d/1xnPwMkGS7_QwbldP-FZHFRXWKovBKJ0m/view?usp=drivesdk",
+            "2301010000300001": "https://drive.google.com/file/d/1ng3SYI9oz_ZQuCDrwtME34HkuFbmhigv/view?usp=drivesdk",
+            "2301003001050017": "https://drive.google.com/file/d/1Zpwg8vlY4UWWb48gJxvJrKwCqca3EajV/view?usp=drivesdk",
+            "2301003001050013": "https://drive.google.com/file/d/1cRjS6Z3lGlvRm48HSE67YjabkkpcmaWQ/view?usp=drivesdk",
+            "2301010001010060": "https://drive.google.com/file/d/1ZCilxt0XGHbYu2fd42pkmnQqI7qzFq8a/view?usp=drivesdk",
+            "2301010000200008": "https://drive.google.com/file/d/1vDcA6UhwacDJ6Pxth8BgcTcpkgZqytaP/view?usp=drivesdk",
+            "2301015000200004": "https://drive.google.com/file/d/1iY7Gsi1JvDOg_P5Th-ZBZnbYypoKWeFT/view?usp=drivesdk",
+            "2301010000200005": "https://drive.google.com/file/d/1j49IAbg6hA2W14OYutSASq6rBIGELhYY/view?usp=drivesdk",
+            "2301010000200019": "https://drive.google.com/file/d/1EHLOjqmwZgsMhuk7aD2o-_TaLenwivaN/view?usp=drivesdk",
+            "2301010001050019": "https://drive.google.com/file/d/1PXdEiygqaEMht1nzRGsiUODcCJX1BuJP/view?usp=drivesdk",
+            "2301010001010012": "https://drive.google.com/file/d/1yabsBQqY0yOPB9XnknK3roHfVLqmNTPW/view?usp=drivesdk",
+            "2301013000470002": "https://drive.google.com/file/d/11aUQzAHh9edjHk3ovFU4UOPck7jZTkXD/view?usp=drivesdk",
+            "2301010000760009": "https://drive.google.com/file/d/1ar1wEzy4FmCV4vfboY-51zs6ts88yJRh/view?usp=drivesdk",
+            "2301005001170004": "https://drive.google.com/file/d/1FxcJy75akiDG-sIqdifIg8PfS1-TY2V9/view?usp=drivesdk",
+            "2301000001050016": "https://drive.google.com/file/d/1HKDl0wWDRkKBY-Hd_32O-SXlAwQB0SYv/view?usp=drivesdk",
+            "2301010000760029": "https://drive.google.com/file/d/1vSvjKuPSjH_jsSXxprdzSTserJ_SfTjm/view?usp=drivesdk",
+            "2301010000200009": "https://drive.google.com/file/d/1sqk9vWnuQqXTUuVmQLEjCARKd0k4Rv_h/view?usp=drivesdk",
+            "2301013000200011": "https://drive.google.com/file/d/1pfQFyCHrjceqj4OFcvF_ZIRuy-Wtfj7i/view?usp=drivesdk",
+            "2301003001050004": "https://drive.google.com/file/d/11X1Gu8L_wKdczgxoCMBhnUS8vNncNiTj/view?usp=drivesdk",
+            "2301010000170015": "https://drive.google.com/file/d/1C47LZuaIMV_PAXzVr8siO2EcfsrSVW92/view?usp=drivesdk",
+            "2301010001050005": "https://drive.google.com/file/d/1CnAgU1qx75hicYfYPrXEQEwQE5RE9ue1/view?usp=drivesdk",
+            "2301010000760017": "https://drive.google.com/file/d/1HULSF1DdqdY1tVA2_pv3a1gwMMUQ0axY/view?usp=drivesdk",
+            "2301000000610005": "https://drive.google.com/file/d/15_k0hX82tLiRcZ2f7-T6p8xo7Cll_ODH/view?usp=drivesdk",
+            "2301000000610014": "https://drive.google.com/file/d/18pe-ex0__6KyoarGHF-ScHQb0qBeWaVL/view?usp=drivesdk",
+            "2301003000470021": "https://drive.google.com/file/d/1jLa-r7WoYdqVNDDzeZba1lE3j5aFyGVP/view?usp=drivesdk",
+            "2301000000030021": "https://drive.google.com/file/d/1IhvnFxmVKRvv94x0ABNC7IqiHaA5Pnpd/view?usp=drivesdk",
+            "2301000001050007": "https://drive.google.com/file/d/1lbLpmI5aKCTPRjYAWA4zdwK2uN8Mry3v/view?usp=drivesdk",
+            "2301000001050002": "https://drive.google.com/file/d/1bPiH2s7M-alYx0WjEDt0tnz1JtdkxMhe/view?usp=drivesdk",
+            "2301000000900071": "https://drive.google.com/file/d/1wh9tB97MvoGLGb9uHoKY686vXyCyyCJE/view?usp=drivesdk",
+            "2301010000760019": "https://drive.google.com/file/d/1w_Asl1CwxO-5Kx2suMy--_a4Kqr0l-w4/view?usp=drivesdk",
+            "2301000000900040": "https://drive.google.com/file/d/1K9oN7bR819FodyGZa4lcALq5l8JlKV4u/view?usp=drivesdk",
+            "2301010000760013": "https://drive.google.com/file/d/1o2fHGbZ2xZ3rOqojMR-G2tuZ1ujVTXcH/view?usp=drivesdk",
+            "2301010000900054": "https://drive.google.com/file/d/1rkFqVMgIu0gxc-5uxoxxWtUZVo6Yk45V/view?usp=drivesdk",
+            "2301010001010034": "https://drive.google.com/file/d/1JOPjB08gH0wzVuuMi_Kaffg0NsQPE0u1/view?usp=drivesdk",
+            "2301000000610010": "https://drive.google.com/file/d/157j6CiO7r7OGPPsO0U7P14XxGLTXYDat/view?usp=drivesdk",
+            "2301000000610009": "https://drive.google.com/file/d/1TOhpNWUflFNBg1gJatFX5252qfxLc0Ac/view?usp=drivesdk",
+            "2301000000610006": "https://drive.google.com/file/d/1sz04drR169wiJtekyykIc6nu8Hj5reB1/view?usp=drivesdk",
+            "2301000000610013": "https://drive.google.com/file/d/1F4z2AyFLXnAP7FSVwnK6_U4Bi5dDp30r/view?usp=drivesdk",
+            "2301000001750001": "https://drive.google.com/file/d/1n14esZkqr_gSxQsZWl7CM7RDHppWOsag/view?usp=drivesdk",
+            "2301010001000121": "https://drive.google.com/file/d/1y1J6OmltMm2r5qI3oQNjt6RZGMZIZAHq/view?usp=drivesdk",
+            "2301002000030004": "https://drive.google.com/file/d/1hAg1ZNqqSL0PgNV6GVt9lhWbTafkbkJA/view?usp=drivesdk",
+            "2301000000610011": "https://drive.google.com/file/d/1oMNMAE6ObM5ubcPNRL1bbtyjwxQWPWgO/view?usp=drivesdk",
+            "2301010000030030": "https://drive.google.com/file/d/1Rq_SISpA_nxZsFnxHjwTNjcdjKoHjjTH/view?usp=drivesdk",
+            "2301010001010058": "https://drive.google.com/file/d/1XtxsggVj7iSKIXukgcXjMBZm_AOO5meu/view?usp=drivesdk",
+            "2301010001010059": "https://drive.google.com/file/d/1w6_fhzIznGEm4bgQRG-5TTJ08wvRiuXj/view?usp=drivesdk",
+            "2301000000900012": "https://drive.google.com/file/d/1UJeOxP097LnHC7URPY-3Rm65u7l5yQ5O/view?usp=drivesdk",
+            "2301010000200024": "https://drive.google.com/file/d/1DPbtcCQSnwqUt1IF0PmUT2ofWQ5NGGqf/view?usp=drivesdk",
+            "2301000000900039": "https://drive.google.com/file/d/1HYm0C-9UgGWUJpRcUIXtEr6F03ngM9fv/view?usp=drivesdk",
+            "2301010000900088": "https://drive.google.com/file/d/1JIGMAvPUw7F33WYYKX8qzyN5mRy6xw0H/view?usp=drivesdk",
+            "2301010001630008": "https://drive.google.com/file/d/1cLeOlMpCwXs1pcjUm0nY1qqHUq1Opa3M/view?usp=drivesdk",
+            "2301010000200023": "https://drive.google.com/file/d/1r8kVz9enHZSATU8edog4DZWIIBdu_Cpi/view?usp=drivesdk",
+            "2301013000200003": "https://drive.google.com/file/d/1QhQhmHxzD5d1PwoJ6oCCytFdFmsq_DVG/view?usp=drivesdk",
+            "2301010000900047": "https://drive.google.com/file/d/1fAl7CMI46kFOpkXhHTOelRlzC-3_5vdZ/view?usp=drivesdk",
+            "2301008000300008": "https://drive.google.com/file/d/1ifIIKU6L9bvhbJmr1oAE0VDNTUMFL7y0/view?usp=drivesdk",
+            "2301000001050012": "https://drive.google.com/file/d/1dYHlAV9KyzEJ1dgVhLY65S6N4cNMFBCY/view?usp=drivesdk",
+            "2301010001630006": "https://drive.google.com/file/d/1Kjr3EUMKR3k_lo0-r6zgdp5uv4QdllHy/view?usp=drivesdk",
+            "2301010001630004": "https://drive.google.com/file/d/1npUQAYCj2v9kv1cP6d-hQvwvm7ixb_-z/view?usp=drivesdk",
+            "2301000001050011": "https://drive.google.com/file/d/10XVidevQBvEYtiJ47_r3HvDGgdnMI0Vh/view?usp=drivesdk",
+            "2301000000900076": "https://drive.google.com/file/d/1cd4jSlnIOQkZMkNucbpgFuOpYAOO25VC/view?usp=drivesdk",
+            "2301013000200038": "https://drive.google.com/file/d/1zEppTC8BYCI8Y42GCerQjBIwvuHZODMH/view?usp=drivesdk",
+            "2301003000470009": "https://drive.google.com/file/d/1vYKxpDORIO_XWJvCqM6cwBhW_sAC5Ctm/view?usp=drivesdk",
+            "2301003000470026": "https://drive.google.com/file/d/18bH8DbN4OM8BRdNtc_tPow05FrqysJ7F/view?usp=drivesdk",
+            "2301003001910022": "https://drive.google.com/file/d/1tGl32l71zeqwHibUWd66Zi8JgZ3pChvk/view?usp=drivesdk",
+            "2301010000760028": "https://drive.google.com/file/d/1lL8Oa9IwzVernbSv-QnRcJBfkPXb1hAG/view?usp=drivesdk",
+            "2301000000470018": "https://drive.google.com/file/d/1wGFPQQPYTS3r8qhR-apAI-OiyuMqA2Pj/view?usp=drivesdk",
+            "2301000001010057": "https://drive.google.com/file/d/18dgGv2BLWqHha9rgqlBo5mn4bvJ4DzUZ/view?usp=drivesdk",
+            "2301010000200025": "https://drive.google.com/file/d/1xFglj0j6lOduIB7zQG20rM1wVyZCSXhR/view?usp=drivesdk",
+            "2301010000760013": "https://drive.google.com/file/d/1_ZVPH3fm4NDbwwY2ZQJghODUYDsIuIlT/view?usp=drivesdk",
+            "2301012001750008": "https://drive.google.com/file/d/1S9aOmJfwtJdN7KRliJMdEFWexlZsHsAY/view?usp=drivesdk",
+            "2301000000900011": "https://drive.google.com/file/d/13mDUdHUjhGW-vpciXMRkE8rcLSGDYjUU/view?usp=drivesdk",
+            "2301000000900036": "https://drive.google.com/file/d/1TrdBgyrACvQJO0W6Sm8cYVIVp4aDWgmR/view?usp=drivesdk",
+            "2301010000900050": "https://drive.google.com/file/d/1QjcIdFGnhXot7KLJXJu-XHpbNMI4CmdT/view?usp=drivesdk",
+            "2301000000610023": "https://drive.google.com/file/d/1QVVENFjGrAtVCb4Y-DVnw4W428G886qX/view?usp=drivesdk",
+            "2301000000790011": "https://drive.google.com/file/d/1G6ja_WpvkuhaPiH__SDfj-4ttcXgesxK/view?usp=drivesdk",
+            "2301000000610026": "https://drive.google.com/file/d/1szh4oiN6lhTYO8RhYdmKWr2ZEdxFz3EI/view?usp=drivesdk",
+            "2301000000900069": "https://drive.google.com/file/d/1wk8f4E5McThZCX7W7te_ux1DKHQoCm9X/view?usp=drivesdk",
+            "2301000000610013": "https://drive.google.com/file/d/1P7NHCG-0mr37PgImfEAGqaIoX1xZ84GT/view?usp=drivesdk",
+            "2301000000790028": "https://drive.google.com/file/d/1iigRPQRPfPt-fAzXFpoS2If5l58PI-2S/view?usp=drivesdk",
+            "2301000000610001": "https://drive.google.com/file/d/1zshGRxlpdLRRBcmx6avgLCVer3BFT8L7/view?usp=drivesdk",
+            "2301000001050014": "https://drive.google.com/file/d/1pm1K5rYXfkCNLBTfTshACGar29hVylok/view?usp=drivesdk",
+            "2301000000900012": "https://drive.google.com/file/d/1Az7PEwlSupd6aDVwfzZM3qxxQEG5rl4p/view?usp=drivesdk",
+            "2301000000030033": "https://drive.google.com/file/d/1ckNAdpL74N8vSMZrVKq5BqcKhwwB0DEQ/view?usp=drivesdk",
+            "2301000000900039": "https://drive.google.com/file/d/1f6iGUYYj9FhA0RF9JL0TztEJZzJE4Lbm/view?usp=drivesdk",
+            "2301000001750002": "https://drive.google.com/file/d/1mcSyIVWB8wfjoRpkEn80iYaenE7h1o8K/view?usp=drivesdk",
+            "2301000000900079": "https://drive.google.com/file/d/1ziOrALutW-_TjGh-SGjkGXUv9fbOutkD/view?usp=drivesdk",
+            "2301000000610006": "https://drive.google.com/file/d/12Dj-kEEjP0CzwgDnuVz_mikotd1vHQYj/view?usp=drivesdk",
+            "2301000000900088": "https://drive.google.com/file/d/1esH_jNVpnkD5Y7lsOqngwWgrA3EU6DVl/view?usp=drivesdk",
+            "2301000001050026": "https://drive.google.com/file/d/1O276l3rAzLSTair_ciA7GBfbah9W8mRR/view?usp=drivesdk",
+            "2301000001050011": "https://drive.google.com/file/d/1lLdk_ojVTiUeht6PcoIhPHeocd1jXLU7/view?usp=drivesdk",
+            "2301000000900011": "https://drive.google.com/file/d/1HVLMYkLc7IPAVcVLGyM24tSjC54tTfC6/view?usp=drivesdk",
+            "2301000001050004": "https://drive.google.com/file/d/1R0hW9gWpI8lwRkJmHSmyniju0-rAyeIJ/view?usp=drivesdk",
+            "2301000000610001": "https://drive.google.com/file/d/1H3Zh7aplnwTCrvkffm802-k6YclTExtG/view?usp=drivesdk",
+            "2301000001050012": "https://drive.google.com/file/d/1pM8shoumit5cXWxIaBtNGKISSYVv76gI/view?usp=drivesdk",
+            "2301000001050001": "https://drive.google.com/file/d/1OcMaKOaGIdE92xmTwR_5dL7VskzhC5Zx/view?usp=drivesdk",
+            "2301000001050026": "https://drive.google.com/file/d/1O276l3rAzLSTair_ciA7GBfbah9W8mRR/view?usp=drivesdk",
+            "2301010000900022": "https://drive.google.com/file/d/1ghj-rV2CkuhEuAJw-34Z4jbETtTQvVZV/view?usp=drivesdk",
+            "2301010000900050": "https://drive.google.com/file/d/1FdA83NiFjwRf4gLvltxwSmcDgx6VWTT6/view?usp=drivesdk",
+            "2301000000900012": "https://drive.google.com/file/d/1Luj__BDatNIet58ZV-RW7sTfV5wrGWCU/view?usp=drivesdk",
+            "2301000000610014": "https://drive.google.com/file/d/1QG2rBo1vN_hdUnCBSXMm3L9Ka7Mef7Cq/view?usp=drivesdk",
+            "2301000001010016": "https://drive.google.com/file/d/1bedyqGRf0kDT7idOOKjL1q8bs1FID1yr/view?usp=drivesdk",
+            "2301000001050011": "https://drive.google.com/file/d/1lLdk_ojVTiUeht6PcoIhPHeocd1jXLU7/view?usp=drivesdk",
+            "2301000000900076": "https://drive.google.com/file/d/1cd4jSlnIOQkZMkNucbpgFuOpYAOO25VC/view?usp=drivesdk",
+            "2301010001010047": "https://drive.google.com/file/d/1C96ZY4U1Lp7AUWkcQ6KhE90taUQpzFot/view?usp=drivesdk",
+            "2301010000900084": "https://drive.google.com/file/d/1YooNNjPLhJ7U43q_CmrLFQJBBzYr12Ef/view?usp=drivesdk",
+            "2301000000470018": "https://drive.google.com/file/d/1wGFPQQPYTS3r8qhR-apAI-OiyuMqA2Pj/view?usp=drivesdk",
+            "2301010001010031": "https://drive.google.com/file/d/1gH-swUkI8TWvnZKLUHjYXVK7sQYBI_-u/view?usp=drivesdk",
+            "2301010000760021": "https://drive.google.com/file/d/14VP7Yyxj-52EAAHbDqMPmSWk3RlcPrZY/view?usp=drivesdk",
+            "2301003001760006": "https://drive.google.com/file/d/1TksyH3W_JVt88qcg5-Ayg9jznYXaIYVI/view?usp=drivesdk",
+            "2301003000300005": "https://drive.google.com/file/d/1TJCpMUpPViCeDOB8rvINcweRlC4pnpk5/view?usp=drivesdk",
+            "2301010000900022": "https://drive.google.com/file/d/1ghj-rV2CkuhEuAJw-34Z4jbETtTQvVZV/view?usp=drivesdk",
+            "2301013000170003": "https://drive.google.com/file/d/1ckPEIz0VcgBRlHs8iNDU53Y3UDtog6NL/view?usp=drivesdk",
+            "2001000000790069": "https://drive.google.com/file/d/1MrwmJeiYFxbDRfweywcK6FNdz1FEd7r3/view?usp=drivesdk",
+            "2101000000790025": "https://drive.google.com/file/d/1QRyL2w8GJuptvrmjwF4NHvsXuTSiFmdB/view?usp=drivesdk",
+            "2201000001220017": "https://drive.google.com/file/d/1QVVENFjGrAtVCb4Y-DVnw4W428G886qX/view?usp=drivesdk",
+            "2201000000900078": "https://drive.google.com/file/d/1WZSS3UrtCSnnucFcILxQWyBxTR9P98aW/view?usp=drivesdk",
+            "2201003000630003": "https://drive.google.com/file/d/1G6ja_WpvkuhaPiH__SDfj-4ttcXgesxK/view?usp=drivesdk",
+            "2301010000200024": "https://drive.google.com/file/d/1DPbtcCQSnwqUt1IF0PmUT2ofWQ5NGGqf/view?usp=drivesdk",
+            "2001000000790025": "https://drive.google.com/file/d/1QRyL2w8GJuptvrmjwF4NHvsXuTSiFmdB/view?usp=drivesdk",
+            "2301000000470022": "https://drive.google.com/file/d/1FPHq1edtjSezSnEq7rJfL0gNwVIjdQcL/view?usp=drivesdk",
+            "2301013000170025": "https://drive.google.com/file/d/1_2LH83eWewqiPc02J8eshs52U8k3O1Z7/view?usp=drivesdk",
+            "2301013001050015": "https://drive.google.com/file/d/1GiVgSY9CGw7QnWDj3euluqfrtMO1kEV0/view?usp=drivesdk",
+            "2301003000300005": "https://drive.google.com/file/d/1TJCpMUpPViCeDOB8rvINcweRlC4pnpk5/view?usp=drivesdk",
+            "2301013001760006": "https://drive.google.com/file/d/1kp03SFTXZf3WvsUwi2kp9phyMzRYIyqy/view?usp=drivesdk",
+            "2301003000300006": "https://drive.google.com/file/d/13PgTCo5NnkaCrCIvQBw_7tLQE-_hFQbg/view?usp=drivesdk",
+            "2301013000200003": "https://drive.google.com/file/d/1gYK2ad42GuCA5i5ihFBlRNZ48f7IzzcH/view?usp=drivesdk",
+            "2301010000900047": "https://drive.google.com/file/d/1fAl7CMI46kFOpkXhHTOelRlzC-3_5vdZ/view?usp=drivesdk",
+            "2301008000300008": "https://drive.google.com/file/d/1ifIIKU6L9bvhbJmr1oAE0VDNTUMFL7y0/view?usp=drivesdk",
+            "2301000001050012": "https://drive.google.com/file/d/1dYHlAV9KyzEJ1dgVhLY65S6N4cNMFBCY/view?usp=drivesdk",
+            "2301010001630008": "https://drive.google.com/file/d/1cLeOlMpCwXs1pcjUm0nY1qqHUq1Opa3M/view?usp=drivesdk",
+            "2301013000200027": "https://drive.google.com/file/d/126M6_HB6tJjVTXWYfp0DDBd4pJgBwLnE/view?usp=drivesdk",
+            "2301013000470035": "https://drive.google.com/file/d/1coWEWmVM5L6xad7ZEumCNQ-xmGRpSPqZ/view?usp=drivesdk",
+            "2301013000470034": "https://drive.google.com/file/d/1Xpoo6kejrH_809P6LSSKfigblnFP-t_G/view?usp=drivesdk",
+            "2301000000610001": "https://drive.google.com/file/d/1zshGRxlpdLRRBcmx6avgLCVer3BFT8L7/view?usp=drivesdk",
+            "2301003001050014": "https://drive.google.com/file/d/1hv0kkhCBI8lyFDQUKCkqe6wLm7z-w5KR/view?usp=drivesdk",
+            "2301010000900022": "https://drive.google.com/file/d/1ghj-rV2CkuhEuAJw-34Z4jbETtTQvVZV/view?usp=drivesdk",
+            "2301010000760021": "https://drive.google.com/file/d/14VP7Yyxj-52EAAHbDqMPmSWk3RlcPrZY/view?usp=drivesdk",
+            "2301002001750002": "https://drive.google.com/file/d/1mcSyIVWB8wfjoRpkEn80iYaenE7h1o8K/view?usp=drivesdk",
+            "2301012001750011": "https://drive.google.com/file/d/16MlTQY67x3kzXfjc4VKqVqYQ3XJlJJlZ/view?usp=drivesdk",
+            "2301012001750015": "https://drive.google.com/file/d/1TJCpMUpPViCeDOB8rvINcweRlC4pnpk5/view?usp=drivesdk",
+            "2301012001750007": "https://drive.google.com/file/d/1wk8f4E5McThZCX7W7te_ux1DKHQoCm9X/view?usp=drivesdk",
+            "2301012001750023": "https://drive.google.com/file/d/1esH_jNVpnkD5Y7lsOqngwWgrA3EU6DVl/view?usp=drivesdk",
+            "2301003001910045": "https://drive.google.com/file/d/1ckPEIz0VcgBRlHs8iNDU53Y3UDtog6NL/view?usp=drivesdk",
+            "2301012001740003": "https://drive.google.com/file/d/1gH-swUkI8TWvnZKLUHjYXVK7sQYBI_-u/view?usp=drivesdk",
+            "2301000002060045": "https://drive.google.com/file/d/1cd4jSlnIOQkZMkNucbpgFuOpYAOO25VC/view?usp=drivesdk",
+            "2301000000900076": "https://drive.google.com/file/d/1cd4jSlnIOQkZMkNucbpgFuOpYAOO25VC/view?usp=drivesdk",
+            "2301013000200038": "https://drive.google.com/file/d/1zEppTC8BYCI8Y42GCerQjBIwvuHZODMH/view?usp=drivesdk",
+            "2301003000470009": "https://drive.google.com/file/d/1vYKxpDORIO_XWJvCqM6cwBhW_sAC5Ctm/view?usp=drivesdk",
+            "2301003000470026": "https://drive.google.com/file/d/18bH8DbN4OM8BRdNtc_tPow05FrqysJ7F/view?usp=drivesdk",
+            "2301003001910022": "https://drive.google.com/file/d/1tGl32l71zeqwHibUWd66Zi8JgZ3pChvk/view?usp=drivesdk",
+            "2301010000760028": "https://drive.google.com/file/d/1lL8Oa9IwzVernbSv-QnRcJBfkPXb1hAG/view?usp=drivesdk",
+            "2301000000470018": "https://drive.google.com/file/d/1wGFPQQPYTS3r8qhR-apAI-OiyuMqA2Pj/view?usp=drivesdk",
+            "2301000001010057": "https://drive.google.com/file/d/18dgGv2BLWqHha9rgqlBo5mn4bvJ4DzUZ/view?usp=drivesdk",
+            "2301010000200025": "https://drive.google.com/file/d/1xFglj0j6lOduIB7zQG20rM1wVyZCSXhR/view?usp=drivesdk",
+            "2301010000760013": "https://drive.google.com/file/d/1_ZVPH3fm4NDbwwY2ZQJghODUYDsIuIlT/view?usp=drivesdk",
+            "2301012001750008": "https://drive.google.com/file/d/1S9aOmJfwtJdN7KRliJMdEFWexlZsHsAY/view?usp=drivesdk",
+            "2301000000900011": "https://drive.google.com/file/d/13mDUdHUjhGW-vpciXMRkE8rcLSGDYjUU/view?usp=drivesdk",
+            "2301000000900036": "https://drive.google.com/file/d/1TrdBgyrACvQJO0W6Sm8cYVIVp4aDWgmR/view?usp=drivesdk",
+            "2301010000900050": "https://drive.google.com/file/d/1QjcIdFGnhXot7KLJXJu-XHpbNMI4CmdT/view?usp=drivesdk",
+            "2301000000610023": "https://drive.google.com/file/d/1QVVENFjGrAtVCb4Y-DVnw4W428G886qX/view?usp=drivesdk",
+            "2301000000790011": "https://drive.google.com/file/d/1G6ja_WpvkuhaPiH__SDfj-4ttcXgesxK/view?usp=drivesdk",
+            "2301000000610026": "https://drive.google.com/file/d/1szh4oiN6lhTYO8RhYdmKWr2ZEdxFz3EI/view?usp=drivesdk",
+            "2301000000900069": "https://drive.google.com/file/d/1wk8f4E5McThZCX7W7te_ux1DKHQoCm9X/view?usp=drivesdk",
+            "2301000000610013": "https://drive.google.com/file/d/1P7NHCG-0mr37PgImfEAGqaIoX1xZ84GT/view?usp=drivesdk",
+            "2301000000790028": "https://drive.google.com/file/d/1iigRPQRPfPt-fAzXFpoS2If5l58PI-2S/view?usp=drivesdk",
+            "2301000000610001": "https://drive.google.com/file/d/1zshGRxlpdLRRBcmx6avgLCVer3BFT8L7/view?usp=drivesdk",
+            "2301000001050014": "https://drive.google.com/file/d/1pm1K5rYXfkCNLBTfTshACGar29hVylok/view?usp=drivesdk",
+            "2301000000900012": "https://drive.google.com/file/d/1Az7PEwlSupd6aDVwfzZM3qxxQEG5rl4p/view?usp=drivesdk",
+            "2301000000030033": "https://drive.google.com/file/d/1ckNAdpL74N8vSMZrVKq5BqcKhwwB0DEQ/view?usp=drivesdk",
+            "2301000000900039": "https://drive.google.com/file/d/1f6iGUYYj9FhA0RF9JL0TztEJZzJE4Lbm/view?usp=drivesdk",
+            "2301000001750002": "https://drive.google.com/file/d/1mcSyIVWB8wfjoRpkEn80iYaenE7h1o8K/view?usp=drivesdk",
+            "2301000000900079": "https://drive.google.com/file/d/1ziOrALutW-_TjGh-SGjkGXUv9fbOutkD/view?usp=drivesdk",
+            "2301000000610006": "https://drive.google.com/file/d/12Dj-kEEjP0CzwgDnuVz_mikotd1vHQYj/view?usp=drivesdk",
+            "2301000000900088": "https://drive.google.com/file/d/1esH_jNVpnkD5Y7lsOqngwWgrA3EU6DVl/view?usp=drivesdk",
+            "2301000001050026": "https://drive.google.com/file/d/1O276l3rAzLSTair_ciA7GBfbah9W8mRR/view?usp=drivesdk",
+            "2301000001050011": "https://drive.google.com/file/d/1lLdk_ojVTiUeht6PcoIhPHeocd1jXLU7/view?usp=drivesdk",
+            "2301000000900011": "https://drive.google.com/file/d/1HVLMYkLc7IPAVcVLGyM24tSjC54tTfC6/view?usp=drivesdk",
+            "2301000001050004": "https://drive.google.com/file/d/1R0hW9gWpI8lwRkJmHSmyniju0-rAyeIJ/view?usp=drivesdk",
+            "2301000000610001": "https://drive.google.com/file/d/1H3Zh7aplnwTCrvkffm802-k6YclTExtG/view?usp=drivesdk",
+            "2301000001050012": "https://drive.google.com/file/d/1pM8shoumit5cXWxIaBtNGKISSYVv76gI/view?usp=drivesdk",
+            "2301000001050001": "https://drive.google.com/file/d/1OcMaKOaGIdE92xmTwR_5dL7VskzhC5Zx/view?usp=drivesdk",
+            "2301000001050026": "https://drive.google.com/file/d/1O276l3rAzLSTair_ciA7GBfbah9W8mRR/view?usp=drivesdk",
+            "2301010000900022": "https://drive.google.com/file/d/1ghj-rV2CkuhEuAJw-34Z4jbETtTQvVZV/view?usp=drivesdk",
+            "2301010000900050": "https://drive.google.com/file/d/1FdA83NiFjwRf4gLvltxwSmcDgx6VWTT6/view?usp=drivesdk",
+            "2301000000900012": "https://drive.google.com/file/d/1Luj__BDatNIet58ZV-RW7sTfV5wrGWCU/view?usp=drivesdk",
+            "2301000000610014": "https://drive.google.com/file/d/1QG2rBo1vN_hdUnCBSXMm3L9Ka7Mef7Cq/view?usp=drivesdk",
+            "2301000001010016": "https://drive.google.com/file/d/1bedyqGRf0kDT7idOOKjL1q8bs1FID1yr/view?usp=drivesdk",
+            "2301000001050011": "https://drive.google.com/file/d/1lLdk_ojVTiUeht6PcoIhPHeocd1jXLU7/view?usp=drivesdk",
+            "2301000000900076": "https://drive.google.com/file/d/1cd4jSlnIOQkZMkNucbpgFuOpYAOO25VC/view?usp=drivesdk",
+            "2301010001010047": "https://drive.google.com/file/d/1C96ZY4U1Lp7AUWkcQ6KhE90taUQpzFot/view?usp=drivesdk",
+            "2301010000900084": "https://drive.google.com/file/d/1YooNNjPLhJ7U43q_CmrLFQJBBzYr12Ef/view?usp=drivesdk",
+            "2301000000470018": "https://drive.google.com/file/d/1wGFPQQPYTS3r8qhR-apAI-OiyuMqA2Pj/view?usp=drivesdk",
+            "2301010001010031": "https://drive.google.com/file/d/1gH-swUkI8TWvnZKLUHjYXVK7sQYBI_-u/view?usp=drivesdk",
+            "2301010000760021": "https://drive.google.com/file/d/14VP7Yyxj-52EAAHbDqMPmSWk3RlcPrZY/view?usp=drivesdk",
+            "2301003001760006": "https://drive.google.com/file/d/1TksyH3W_JVt88qcg5-Ayg9jznYXaIYVI/view?usp=drivesdk",
+            "2301003000300005": "https://drive.google.com/file/d/1TJCpMUpPViCeDOB8rvINcweRlC4pnpk5/view?usp=drivesdk",
+            "2301010000900022": "https://drive.google.com/file/d/1ghj-rV2CkuhEuAJw-34Z4jbETtTQvVZV/view?usp=drivesdk",
+            "2301013000170003": "https://drive.google.com/file/d/1ckPEIz0VcgBRlHs8iNDU53Y3UDtog6NL/view?usp=drivesdk",
+            "2001000000790069": "https://drive.google.com/file/d/1MrwmJeiYFxbDRfweywcK6FNdz1FEd7r3/view?usp=drivesdk",
+            "2101000000790025": "https://drive.google.com/file/d/1QRyL2w8GJuptvrmjwF4NHvsXuTSiFmdB/view?usp=drivesdk",
+            "2201000001220017": "https://drive.google.com/file/d/1QVVENFjGrAtVCb4Y-DVnw4W428G886qX/view?usp=drivesdk",
+            "2201000000900078": "https://drive.google.com/file/d/1WZSS3UrtCSnnucFcILxQWyBxTR9P98aW/view?usp=drivesdk",
+            "2201003000630003": "https://drive.google.com/file/d/1G6ja_WpvkuhaPiH__SDfj-4ttcXgesxK/view?usp=drivesdk",
+            "2301010000200024": "https://drive.google.com/file/d/1DPbtcCQSnwqUt1IF0PmUT2ofWQ5NGGqf/view?usp=drivesdk",
+            "2001000000790025": "https://drive.google.com/file/d/1QRyL2w8GJuptvrmjwF4NHvsXuTSiFmdB/view?usp=drivesdk",
+            "2301000000470022": "https://drive.google.com/file/d/1FPHq1edtjSezSnEq7rJfL0gNwVIjdQcL/view?usp=drivesdk",
+            "2301013000170025": "https://drive.google.com/file/d/1_2LH83eWewqiPc02J8eshs52U8k3O1Z7/view?usp=drivesdk",
+            "2301013001050015": "https://drive.google.com/file/d/1GiVgSY9CGw7QnWDj3euluqfrtMO1kEV0/view?usp=drivesdk",
+            "2301003000300005": "https://drive.google.com/file/d/1TJCpMUpPViCeDOB8rvINcweRlC4pnpk5/view?usp=drivesdk",
+            "2301013001760006": "https://drive.google.com/file/d/1kp03SFTXZf3WvsUwi2kp9phyMzRYIyqy/view?usp=drivesdk",
+            "2301003000300006": "https://drive.google.com/file/d/13PgTCo5NnkaCrCIvQBw_7tLQE-_hFQbg/view?usp=drivesdk",
+            "2301013000200003": "https://drive.google.com/file/d/1gYK2ad42GuCA5i5ihFBlRNZ48f7IzzcH/view?usp=drivesdk",
+            "2301010000900047": "https://drive.google.com/file/d/1fAl7CMI46kFOpkXhHTOelRlzC-3_5vdZ/view?usp=drivesdk",
+            "2301008000300008": "https://drive.google.com/file/d/1ifIIKU6L9bvhbJmr1oAE0VDNTUMFL7y0/view?usp=drivesdk",
+            "2301000001050012": "https://drive.google.com/file/d/1dYHlAV9KyzEJ1dgVhLY65S6N4cNMFBCY/view?usp=drivesdk",
+            "2301010001630008": "https://drive.google.com/file/d/1cLeOlMpCwXs1pcjUm0nY1qqHUq1Opa3M/view?usp=drivesdk",
+            "2301013000200027": "https://drive.google.com/file/d/126M6_HB6tJjVTXWYfp0DDBd4pJgBwLnE/view?usp=drivesdk",
+            "2301013000470035": "https://drive.google.com/file/d/1coWEWmVM5L6xad7ZEumCNQ-xmGRpSPqZ/view?usp=drivesdk",
+            "2301013000470034": "https://drive.google.com/file/d/1Xpoo6kejrH_809P6LSSKfigblnFP-t_G/view?usp=drivesdk",
+            "2301000000610001": "https://drive.google.com/file/d/1zshGRxlpdLRRBcmx6avgLCVer3BFT8L7/view?usp=drivesdk",
+            "2301003001050014": "https://drive.google.com/file/d/1hv0kkhCBI8lyFDQUKCkqe6wLm7z-w5KR/view?usp=drivesdk",
+            "2301010000900022": "https://drive.google.com/file/d/1ghj-rV2CkuhEuAJw-34Z4jbETtTQvVZV/view?usp=drivesdk",
+            "2301010000760021": "https://drive.google.com/file/d/14VP7Yyxj-52EAAHbDqMPmSWk3RlcPrZY/view?usp=drivesdk",
+            "2301002001750002": "https://drive.google.com/file/d/1mcSyIVWB8wfjoRpkEn80iYaenE7h1o8K/view?usp=drivesdk",
+            "2301012001750011": "https://drive.google.com/file/d/16MlTQY67x3kzXfjc4VKqVqYQ3XJlJJlZ/view?usp=drivesdk",
+            "2301012001750015": "https://drive.google.com/file/d/1TJCpMUpPViCeDOB8rvINcweRlC4pnpk5/view?usp=drivesdk",
+            "2301012001750007": "https://drive.google.com/file/d/1wk8f4E5McThZCX7W7te_ux1DKHQoCm9X/view?usp=drivesdk",
+            "2301012001750023": "https://drive.google.com/file/d/1esH_jNVpnkD5Y7lsOqngwWgrA3EU6DVl/view?usp=drivesdk",
+            "2301003001910045": "https://drive.google.com/file/d/1ckPEIz0VcgBRlHs8iNDU53Y3UDtog6NL/view?usp=drivesdk",
+            "2301012001740003": "https://drive.google.com/file/d/1gH-swUkI8TWvnZKLUHjYXVK7sQYBI_-u/view?usp=drivesdk",
+            "2301000002060045": "https://drive.google.com/file/d/1cd4jSlnIOQkZMkNucbpgFuOpYAOO25VC/view?usp=drivesdk",
+            "2301000000900076": "https://drive.google.com/file/d/1cd4jSlnIOQkZMkNucbpgFuOpYAOO25VC/view?usp=drivesdk",
+            "2301013000200038": "https://drive.google.com/file/d/1zEppTC8BYCI8Y42GCerQjBIwvuHZODMH/view?usp=drivesdk",
+            "2301003000470009": "https://drive.google.com/file/d/1vYKxpDORIO_XWJvCqM6cwBhW_sAC5Ctm/view?usp=drivesdk",
+            "2301003000470026": "https://drive.google.com/file/d/18bH8DbN4OM8BRdNtc_tPow05FrqysJ7F/view?usp=drivesdk",
+            "2301003001910022": "https://drive.google.com/file/d/1tGl32l71zeqwHibUWd66Zi8JgZ3pChvk/view?usp=drivesdk",
+            "2301010000760028": "https://drive.google.com/file/d/1lL8Oa9IwzVernbSv-QnRcJBfkPXb1hAG/view?usp=drivesdk",
+            "2301000000470018": "https://drive.google.com/file/d/1wGFPQQPYTS3r8qhR-apAI-OiyuMqA2Pj/view?usp=drivesdk",
+            "2301000001010057": "https://drive.google.com/file/d/18dgGv2BLWqHha9rgqlBo5mn4bvJ4DzUZ/view?usp=drivesdk",
+            "2301010000200025": "https://drive.google.com/file/d/1xFglj0j6lOduIB7zQG20rM1wVyZCSXhR/view?usp=drivesdk",
+            "2301010000760013": "https://drive.google.com/file/d/1_ZVPH3fm4NDbwwY2ZQJghODUYDsIuIlT/view?usp=drivesdk",
+            "2301012001750008": "https://drive.google.com/file/d/1S9aOmJfwtJdN7KRliJMdEFWexlZsHsAY/view?usp=drivesdk",
+            "2301000000900011": "https://drive.google.com/file/d/13mDUdHUjhGW-vpciXMRkE8rcLSGDYjUU/view?usp=drivesdk",
+            "2301000000900036": "https://drive.google.com/file/d/1TrdBgyrACvQJO0W6Sm8cYVIVp4aDWgmR/view?usp=drivesdk",
+            "2301010000900050": "https://drive.google.com/file/d/1QjcIdFGnhXot7KLJXJu-XHpbNMI4CmdT/view?usp=drivesdk",
+            "2301000000610023": "https://drive.google.com/file/d/1QVVENFjGrAtVCb4Y-DVnw4W428G886qX/view?usp=drivesdk",
+            "2301000000790011": "https://drive.google.com/file/d/1G6ja_WpvkuhaPiH__SDfj-4ttcXgesxK/view?usp=drivesdk",
+            "2301000000610026": "https://drive.google.com/file/d/1szh4oiN6lhTYO8RhYdmKWr2ZEdxFz3EI/view?usp=drivesdk",
+            "2301000000900069": "https://drive.google.com/file/d/1wk8f4E5McThZCX7W7te_ux1DKHQoCm9X/view?usp=drivesdk",
+            "2301000000610013": "https://drive.google.com/file/d/1P7NHCG-0mr37PgImfEAGqaIoX1xZ84GT/view?usp=drivesdk",
+            "2301000000790028": "https://drive.google.com/file/d/1iigRPQRPfPt-fAzXFpoS2If5l58PI-2S/view?usp=drivesdk",
+            "2301000000610001": "https://drive.google.com/file/d/1zshGRxlpdLRRBcmx6avgLCVer3BFT8L7/view?usp=drivesdk",
+            "2301000001050014": "https://drive.google.com/file/d/1pm1K5rYXfkCNLBTfTshACGar29hVylok/view?usp=drivesdk",
+            "2301000000900012": "https://drive.google.com/file/d/1Az7PEwlSupd6aDVwfzZM3qxxQEG5rl4p/view?usp=drivesdk",
+            "2301000000030033": "https://drive.google.com/file/d/1ckNAdpL74N8vSMZrVKq5BqcKhwwB0DEQ/view?usp=drivesdk",
+            "2301000000900039": "https://drive.google.com/file/d/1f6iGUYYj9FhA0RF9JL0TztEJZzJE4Lbm/view?usp=drivesdk",
+            "2301000001750002": "https://drive.google.com/file/d/1mcSyIVWB8wfjoRpkEn80iYaenE7h1o8K/view?usp=drivesdk",
+            "2301000000900079": "https://drive.google.com/file/d/1ziOrALutW-_TjGh-SGjkGXUv9fbOutkD/view?usp=drivesdk",
+            "2301000000610006": "https://drive.google.com/file/d/12Dj-kEEjP0CzwgDnuVz_mikotd1vHQYj/view?usp=drivesdk",
+            "2301000000900088": "https://drive.google.com/file/d/1esH_jNVpnkD5Y7lsOqngwWgrA3EU6DVl/view?usp=drivesdk",
+            "2301000001050026": "https://drive.google.com/file/d/1O276l3rAzLSTair_ciA7GBfbah9W8mRR/view?usp=drivesdk",
+            "2301000001050011": "https://drive.google.com/file/d/1lLdk_ojVTiUeht6PcoIhPHeocd1jXLU7/view?usp=drivesdk",
+            "2301000000900011": "https://drive.google.com/file/d/1HVLMYkLc7IPAVcVLGyM24tSjC54tTfC6/view?usp=drivesdk",
+            "2301000001050004": "https://drive.google.com/file/d/1R0hW9gWpI8lwRkJmHSmyniju0-rAyeIJ/view?usp=drivesdk",
+            "2301000000610001": "https://drive.google.com/file/d/1H3Zh7aplnwTCrvkffm802-k6YclTExtG/view?usp=drivesdk",
+            "2301000001050012": "https://drive.google.com/file/d/1pM8shoumit5cXWxIaBtNGKISSYVv76gI/view?usp=drivesdk",
+            "2301000001050001": "https://drive.google.com/file/d/1OcMaKOaGIdE92xmTwR_5dL7VskzhC5Zx/view?usp=drivesdk",
+            "2301000001050026": "https://drive.google.com/file/d/1O276l3rAzLSTair_ciA7GBfbah9W8mRR/view?usp=drivesdk",
+            "2301010000900022": "https://drive.google.com/file/d/1ghj-rV2CkuhEuAJw-34Z4jbETtTQvVZV/view?usp=drivesdk",
+            "2301010000900050": "https://drive.google.com/file/d/1FdA83NiFjwRf4gLvltxwSmcDgx6VWTT6/view?usp=drivesdk",
+            "2301000000900012": "https://drive.google.com/file/d/1Luj__BDatNIet58ZV-RW7sTfV5wrGWCU/view?usp=drivesdk",
+            "2301000000610014": "https://drive.google.com/file/d/1QG2rBo1vN_hdUnCBSXMm3L9Ka7Mef7Cq/view?usp=drivesdk",
+            "2301000001010016": "https://drive.google.com/file/d/1bedyqGRf0kDT7idOOKjL1q8bs1FID1yr/view?usp=drivesdk",
+            "2301000001050011": "https://drive.google.com/file/d/1lLdk_ojVTiUeht6PcoIhPHeocd1jXLU7/view?usp=drivesdk",
+            "2301000000900076": "https://drive.google.com/file/d/1cd4jSlnIOQkZMkNucbpgFuOpYAOO25VC/view?usp=drivesdk",
+            "2301010001010047": "https://drive.google.com/file/d/1C96ZY4U1Lp7AUWkcQ6KhE90taUQpzFot/view?usp=drivesdk",
+            "2301010000900084": "https://drive.google.com/file/d/1YooNNjPLhJ7U43q_CmrLFQJBBzYr12Ef/view?usp=drivesdk",
+            "2301000000470018": "https://drive.google.com/file/d/1wGFPQQPYTS3r8qhR-apAI-OiyuMqA2Pj/view?usp=drivesdk",
+            "2301010001010031": "https://drive.google.com/file/d/1gH-swUkI8TWvnZKLUHjYXVK7sQYBI_-u/view?usp=drivesdk",
+            "2301010000760021": "https://drive.google.com/file/d/14VP7Yyxj-52EAAHbDqMPmSWk3RlcPrZY/view?usp=drivesdk",
+            "2301003001760006": "https://drive.google.com/file/d/1TksyH3W_JVt88qcg5-Ayg9jznYXaIYVI/view?usp=drivesdk",
+            "2301003000300005": "https://drive.google.com/file/d/1TJCpMUpPViCeDOB8rvINcweRlC4pnpk5/view?usp=drivesdk",
+            "2301010000900022": "https://drive.google.com/file/d/1ghj-rV2CkuhEuAJw-34Z4jbETtTQvVZV/view?usp=drivesdk",
+            "2301013000170003": "https://drive.google.com/file/d/1ckPEIz0VcgBRlHs8iNDU53Y3UDtog6NL/view?usp=drivesdk",
+            "2001000000790069": "https://drive.google.com/file/d/1MrwmJeiYFxbDRfweywcK6FNdz1FEd7r3/view?usp=drivesdk",
+            "2101000000790025": "https://drive.google.com/file/d/1QRyL2w8GJuptvrmjwF4NHvsXuTSiFmdB/view?usp=drivesdk",
+            "2201000001220017": "https://drive.google.com/file/d/1QVVENFjGrAtVCb4Y-DVnw4W428G886qX/view?usp=drivesdk",
+            "2201000000900078": "https://drive.google.com/file/d/1WZSS3UrtCSnnucFcILxQWyBxTR9P98aW/view?usp=drivesdk",
+            "2201003000630003": "https://drive.google.com/file/d/1G6ja_WpvkuhaPiH__SDfj-4ttcXgesxK/view?usp=drivesdk",
+            "2301010000200024": "https://drive.google.com/file/d/1DPbtcCQSnwqUt1IF0PmUT2ofWQ5NGGqf/view?usp=drivesdk",
+            "2001000000790025": "https://drive.google.com/file/d/1QRyL2w8GJuptvrmjwF4NHvsXuTSiFmdB/view?usp=drivesdk"
+        };
+
         function accessFile(event) {
             event.preventDefault(); // Prevent form submission
             const regNumber = document.getElementById("regNumber").value.trim();
-            const links = {
-                {
-                "23010100010012": "https://drive.google.com/file/d/1Bw3VkkGk6yK9hxkLwJ9_vF_1x6c2P_E0/view?usp=drivesdk",
-                "23010100050010": "https://drive.google.com/file/d/1yWlVl_T67b5G88x59_r_v-Yp-0f6s3fV/view?usp=drivesdk",
-                "23010030010002": "https://drive.google.com/file/d/185_GkI6L79nKfY_C9XN8_xNlWd43u4f8/view?usp=drivesdk",
-                "23010130002011": "https://drive.google.com/file/d/1rK-yW81yX9_h6J9t3K-VzRLmUAYYlrqj-S5HyC_vxBk/view?usp=drivesdk",
-                "23010130003029": "https://drive.google.com/file/d/1oc7vE84-CjP-X-wE-09SEi0tanUhXpYeXgWvnPUJ-m/view?usp=drivesdk",
-                "23010120010002": "https://drive.google.com/file/d/1zWEw6Sg7l1GNxgVe-v-nyPijW8NwZm81q8qW9KKo3PhD/view?usp=drivesdk",
-                "23010000030006": "https://drive.google.com/file/d/1T_V22Ykiu42l-mHifGWJ9O6CboEJpRaUGheKBnP/view?usp=drivesdk",
-                "2301005001910005": "https://drive.google.com/file/d/1U1EagU8gC6_dM0Nt-6oLUUL053200aZbDISCpN/view?usp=drivesdk",
-                "2301010001050010": "https://drive.google.com/file/d/1Jn9asGweU_QpI-QekwTRLMU4YYliQ-S5HyC_vxBk/view?usp=drivesdk",
-                "230100000100020": "https://drive.google.com/file/d/1dF7UAO642b-eB9Wk_XidRfl_5CUehk9vgLxghsNO/view?usp=drivesdk",
-                "230100000100019": "https://drive.google.com/file/d/1_cdvhU6IqB9g3Y5d_f1-CS1royxKVrpGu9znDNK-G/view?usp=drivesdk",
-                "230101000030018": "https://drive.google.com/file/d/12b_Ejdizp-T5S2y2Cd-jckLVnoe6SeOyYlgL3gb/view?usp=drivesdk",
-                "230101000030003": "https://drive.google.com/file/d/1GNXVvg-4xW_9sN4d-NT8-N7_ZOtpEIRaxNRhviueka/view?usp=drivesdk",
-                "230101000500012": "https://drive.google.com/file/d/1mZ5EKCQR9U_s48ndmW26MiyiKA2q7Bf2DmMoQOXA/view?usp=drivesdk",
-                "230101000500006": "https://drive.google.com/file/d/18UQCaGuF0S_M5g6nX_Xg2gFHQRzhFFflc3KoW4pGUK/view?usp=drivesdk",
-                "2301012001220001": "https://drive.google.com/file/d/12edSAnjqp_4pU54DfWtZp3gR5rT7qq33XeRQS/view?usp=drivesdk",
-                "2301018001220005": "https://drive.google.com/file/d/1UaeCipkb_4gH20-yyl8C7HBkM5fsqnscuLG9wR7a/view?usp=drivesdk",
-                "2301010001220002": "https://drive.google.com/file/d/1GwLhAh-hYF9C5YrwOPnclEznR-n2d4f6kg-NPUF/view?usp=drivesdk",
-                "230101000050001": "https://drive.google.com/file/d/1S3QblvV528C-Jz0wjlt0wBqkcpnlNyyY6OpVjbEIA/view?usp=drivesdk",
-                "2301003001050003": "https://drive.google.com/file/d/1gQKgIr8yZ060D4iZcDBhIBglez5FYUVbWEvuiwN/view?usp=drivesdk",
-                "2301000000610008": "https://drive.google.com/file/d/1oDq05wsdc2i9wz-m_gMaihvZ-oP9SpbGcIqhD-KK/view?usp=drivesdk",
-                "230100000030022": "https://drive.google.com/file/d/1LF3aYvdkXw9U-q13GI2-vbWhG2_AAcYMJ9JxsR/view?usp=drivesdk",
-                "230101300050024": "https://drive.google.com/file/d/181w_dl0G_M4_6h8jFXh5x8tPG4ZX-epsqC-oy9/view?usp=drivesdk",
-                "230100300030013": "https://drive.google.com/file/d/1m1TAybplbB4Q45KMouQLAjZ70ll_5bgrCO9MSDr/view?usp=drivesdk",
-                "230101000200018": "https://drive.google.com/file/d/1o3YqdBRY16C7B7Y-xG3iKywM8M9Mi90pgyXCugH/view?usp=drivesdk",
-                "230101000200036": "https://drive.google.com/file/d/1-i9iwadCcm7mXqDGMIm6uloG0_5lv7Qs4qh_Sa/view?usp=drivesdk",
-                "230100000610019": "https://drive.google.com/file/d/1pl-e-Z3Va5S_K98-DaMfaouzAcRwI2-WamtrO06/view?usp=drivesdk",
-                "2301003001050017": "https://drive.google.com/file/d/1xnPwMkgZgYc-3-sGS7_QwbldP-FZhFRXWKovBKj0m/view?usp=drivesdk",
-                "2301003001050013": "https://drive.google.com/file/d/1ng3SYi9Oz5rD1_iz_ZQUcDrwtME34HkuFbmhigv/view?usp=drivesdk",
-                "230101000100060": "https://drive.google.com/file/d/1Zpwg8VlY2k3-c-4UMw48gJxvJrKwCqca3EajV/view?usp=drivesdk",
-                "230101000200008": "https://drive.google.com/file/d/1cRjs6zI3G5z-j_pLVRm48HSE67YjabkkpcmaWQ/view?usp=drivesdk",
-                "230101000200019": "https://drive.google.com/file/d/1F7hTabR53iK4m9qDlyhwvxlYsull7HNXCoOPvx/view?usp=drivesdk",
-                "230101000200012": "https://drive.google.com/file/d/1bOlmE8O-7_V8JzxyKnwecdDSoMGHrD3zXNChT8/view?usp=drivesdk",
-                "230101300020011": "https://drive.google.com/file/d/1Qy2G_LLVc6Yx1X-WYCDtvDHyo-Bnx9eqAdA9HliI/view?usp=drivesdk",
-                "230101300020013": "https://drive.google.com/file/d/1tYpHzX297P8p_Q_x0uXkKc-dM7icwRYAW5AD4aqn/view?usp=drivesdk",
-                "230101000200001": "https://drive.google.com/file/d/1jOP85o8L0i-1wJvdlLt_xBQxBEJbYR59P0NRrBS/view?usp=drivesdk",
-                "230101000200014": "https://drive.google.com/file/d/1yn49NDeL-V_Nksa3Vp5j9xvixvu9CZPisS0/view?usp=drivesdk",
-                "230100000900071": "https://drive.google.com/file/d/1vSvJKuPsjLhWvj-H_jsSxXprdzSTserJ_Sftjm/view?usp=drivesdk",
-                "210100000610021": "https://drive.google.com/file/d/1ZCilxt0XGG-04W_HhbYu2Fd42pkmnQqI7qFq8a/view?usp=drivesdk",
-                "2301010001050006": "https://drive.google.com/file/d/1vDCa6UHWo48uR6wacDj6xPth8gcTcpkgZqytap/view?usp=drivesdk",
-                "230101000200021": "https://drive.google.com/file/d/1iY7Gsi1JvH_z8mOog_P5TH-ZBznbyYpoKWeFT/view?usp=drivesdk",
-                "230101500020004": "https://drive.google.com/file/d/1j49lAb6hA2W14YUTsASq6rBIGELhYY/view?usp=drivesdk",
-                "230101000200007": "https://drive.google.com/file/d/1EHLOjmqcWp6CgswZgsMhuk7aD2o-_TaLenwivaN/view?usp=drivesdk",
-                "230101000970060": "https://drive.google.com/file/d/1PXDEiygqa_wV6AeMth1nzRGsiUODcCJX1BuJp/view?usp=drivesdk",
-                "230101500020006": "https://drive.google.com/file/d/1TJDYc37eN1Qe-EinEEnay1iivfFHRLXccHWI/view?usp=drivesdk",
-                "230101000200005": "https://drive.google.com/file/d/1yabsBQQyW-5Lq70h0yED9knvKFH3roHFvLqmNTPW/view?usp=drivesdk",
-                "230100000030033": "https://drive.google.com/file/d/11aUQzAHcOq9iQh9eDjh3okXovFU4UOPck7jZTkkD/view?usp=drivesdk",
-                "230100000030008": "https://drive.google.com/file/d/1ar1wEzy4k_v3jXfFmCV4vfbOY-51zs6ts88YjRh/view?usp=drivesdk",
-                "230101000900057": "https://drive.google.com/file/d/1FxCjy75ak75sF5LkiDG-slqdiflg8Pfs1-TY2V9/view?usp=drivesdk",
-                "230101000900025": "https://drive.google.com/file/d/1HKDI0wW34f-vPYDRKkBY-Hd_32O-SXIawQBOSyv/view?usp=drivesdk",
-                "2301010001050019": "https://drive.google.com/file/d/11x1Gu8L_t5s0t_W-kdcgzxoCMbhnUS8vNNcNITj/view?usp=drivesdk",
-                "230101000100012": "https://drive.google.com/file/d/1cDe5VqYU1kK58-Ur6cl2YgV7Yx7Hwh8Lz8kzmtY/view?usp=drivesdk",
-                "2301013000470002": "https://drive.google.com/file/d/1e-V2kG2T_l2Q-fAwoGTHcAAiOgigXDgXR29B_L/view?usp=drivesdk",
-                "230101000760009": "https://drive.google.com/file/d/1x_DvGF_m5wS6w-tWyWqXA3JpeCBcrvt8a-UzSTe/view?usp=drivesdk",
-                "2301005001170004": "https://drive.google.com/file/d/1xyQjm8CNwVp2oCNWpm9GefQed16CIhqwfuU-CQW/view?usp=drivesdk",
-                "23010100001050016": "https://drive.google.com/file/d/1EnnOsHG5X2g8iU5GK3ijd5kdC-F0-H1iUbsGV7B/view?usp=drivesdk",
-                "230101000760029": "https://drive.google.com/file/d/1sqk9vWnrO2t7-uJqjXTuuVm_QLEJcARkd0k4Rv_h/view?usp=drivesdk",
-                "230101000200009": "https://drive.google.com/file/d/1pfQFyChnU9_021ceqq4OFcvF_ZlRuy-WtFj7i/view?usp=drivesdk",
-                "2301013002020027": "https://drive.google.com/file/d/1C47LZualkH5bC4MV_PAXZVr8siO2EcfsrSVW92/view?usp=drivesdk",
-                "23010100001050004": "https://drive.google.com/file/d/1CnAgU1qL5mU075HlcfYPrYeqXEQE5RE9ue1/view?usp=drivesdk",
-                "230101000170015": "https://drive.google.com/file/d/1HULSF1DC-QnFk-dqrY1tVA2_pv3a1gwMMUQ0axY/view?usp=drivesdk",
-                "2301010001050005": "https://drive.google.com/file/d/15_k0h8x2pY_50cxtl-JtLlk6KyoarGhf-SCHQ0gBeWaVI/view?usp=drivesdk",
-                "230101000760017": "https://drive.google.com/file/d/18pe-ex0LwzSBYdqVNDDzeZbA1lE3j5aFyGvP/view?usp=drivesdk",
-                "230100000610005": "https://drive.google.com/file/d/1jLa-rWoV2-zK7YKrrv94x0ABNC7lQiHaA5Pnpd/view?usp=drivesdk",
-                "23010100000610014": "https://drive.google.com/file/d/1LhvnFxmW4GqY_KCTprjYAW4zdwK2uN8Mry3v/view?usp=drivesdk",
-                "2301003000470021": "https://drive.google.com/file/d/1bPiH2S7v79wK-AI-yX0WjEDt0tnz1JtdkxMhe/view?usp=drivesdk",
-                "23010100001050007": "https://drive.google.com/file/d/1wh9tb97CKWnC-MvoGLGb9uHoKY686vXyCyyCJE/view?usp=drivesdk",
-                "23010100001050002": "https://drive.google.com/file/d/1w_AsL1CW6FqvX0-5Kx2suMy--a_4kqr0I-w4/view?usp=drivesdk",
-                "230100000930011": "https://drive.google.com/file/d/1K9oN7gB8R58Uq819FodyGza4lCAlq5l8JkY4U/view?usp=drivesdk",
-                "230101000000790011": "https://drive.google.com/file/d/1o2fHGbZz-dD5o2x3R0qojMr-G2tuZ1ujVTxCH/view?usp=drivesdk",
-                "23010100001050001": "https://drive.google.com/file/d/1rKFqVMgLQmJ-uxGc-5uxoxxWtUZVo6Yk45V/view?usp=drivesdk",
-                "23010100001050026": "https://drive.google.com/file/d/1JOPjB08Gk9X-5H0wzVuuMi_Kaffg0NsqOpe0u1/view?usp=drivesdk",
-                "23010100000900079": "https://drive.google.com/file/d/1_T-yHwrC-OcvqDTqp0Y3OVXNu6WVzxk3b/view?usp=drivesdk",
-                "2301010000790021": "https://drive.google.com/file/d/157j6CiO7r3gWd-f7OGPPs0oU7P14XXGLTXYDat/view?usp=drivesdk",
-                "230101000000900040": "https://drive.google.com/file/d/1tOHpNNI9n05b-UFIfnBg1gfatFX5252QfxLc0Ac/view?usp=drivesdk",
-                "230101000100058": "https://drive.google.com/file/d/1p5nL2oM-9K_6z69wijtekyykLc6nu8Hj5reB1/view?usp=drivesdk",
-                "230101000760019": "https://drive.google.com/file/d/1sz04rDr16kS6z-XnAP7FsVwnK6_U4BI5dDp30r/view?usp=drivesdk",
-                "230101000900054": "https://drive.google.com/file/d/1f4z2AyFLXkU_oWr_gSxQsZWI7CM7RDHppWOsag/view?usp=drivesdk",
-                "230101000900068": "https://drive.google.com/file/d/1n14EsZkqqV85_Mm2r5qL3oQNJt6RzgmZIZAha/view?usp=drivesdk",
-                "2301010001010034": "https://drive.google.com/file/d/1Y60mltlmG6790_SL0pGNv6GVt9lhWbTafkbkjA/view?usp=drivesdk",
-                "2301000000610010": "https://drive.google.com/file/d/1hAG1ZNgcqyO9O-o6obM5ubcPNRL1bbtyjwxQWPWgO/view?usp=drivesdk",
-                "230100000610009": "https://drive.google.com/file/d/1oMnMAEV5lHjFk_nxZsFnXHjwTNJcdjKoHJTH/view?usp=drivesdk",
-                "230100000900049": "https://drive.google.com/file/d/1Rq_SIspAeWq-Q_iSKiXukgcXjMBZm_AO05meu/view?usp=drivesdk",
-                "2301010000200031": "https://drive.google.com/file/d/1XTsggvj7V-6h7Yqdcfq8cmJmql9Ltjymh10A/view?usp=drivesdk",
-                "230100000610023": "https://drive.google.com/file/d/1PrHGrjqLq7JAhGEM4bgQRG-5TTJ08wvRiU/view?usp=drivesdk",
-                "230100000790028": "https://drive.google.com/file/d/1w6_fhzlznJ-k97LnHC7URPY-3Rm65u7l5yQ5O/view?usp=drivesdk",
-                "230100000900069": "https://drive.google.com/file/d/1UeJ0xP09rC-oSNgWUT1IF0pMUT2ofWQ5NGGqf/view?usp=drivesdk",
-                "230101000610013": "https://drive.google.com/file/d/1dpbTCcQS23mE_UGqwuIPRCUItXEr6fO3ngM9fv/view?usp=drivesdk",
-                "2301010001010058": "https://drive.google.com/file/d/1hYM0c-9lG99t-Uw7F33WYyKX8qyN5mRY6xw0H/view?usp=drivesdk",
-                "2301010001010059": "https://drive.google.com/file/d/1JIGMAPVLIp9cQoeyXq1pcjIm0v1qGgLla1Opa2M/view?usp=drivesdk",
-                "230101000900012": "https://drive.google.com/file/d/1cLeOMp0b_jI8jI_hzxSATU8edog4DZWIlBdu_Cpi/view?usp=drivesdk",
-                "230101000030030": "https://drive.google.com/file/d/1r8kVz9eMh-j83kxzD5d1PwoJ6oCCytFdmsq_DVG/view?usp=drivesdk",
-                "230101000100054": "https://drive.google.com/file/d/1QHqmhxWw3B1-r_6kFOpkXhHTOelRlzC-3_5vdZ/view?usp=drivesdk",
-                "23010100000610026": "https://drive.google.com/file/d/1fAI7CMi40l67TxbhE1jmr1oAE0VDnTUMFL7y0/view?usp=drivesdk",
-                "2301010001010051": "https://drive.google.com/file/d/1idiiKU6L9KrWjovzbEJ1dgVhLY65S6N4cNMfBCY/view?usp=drivesdk",
-                "2301010001750001": "https://drive.google.com/file/d/1DYHIAV9kM9d_xKR3k_lo0-r6zgdp5uv4QdllHy/view?usp=drivesdk",
-                "2301010001000121": "https://drive.google.com/file/d/1kjr3EUMK-N1Q-j2v9kV1p6D-hQvvvm7ixb-z/view?usp=drivesdk",
-                "230101000200030004": "https://drive.google.com/file/d/1nP3UQAYC63J-BvEYtij47_r3HVdgGdnMIOVh/view?usp=drivesdk",
-                "C/1/25/24909/0004": "https://drive.google.com/file/d/10xVldeVQhW-g-zMKmNucbpgFUOpYAOO25VC/view?usp=drivesdk",
-                "2303103000010006": "https://drive.google.com/file/d/1cd4JsInIOdOa_GYCI8Y42GCerQjBIwvuHZODMH/view?usp=drivesdk",
-                "23010100001010016": "https://drive.google.com/file/d/1zEppTC8BkGg-RiO_XWjvCQM6cwBhW_sAC5Ctm/view?usp=drivesdk",
-                "2301010000500004": "https://drive.google.com/file/d/1vYKxpDOPtV5k_4OM8BRdNtc_tPow05FrqysJ7F/view?usp=drivesdk",
-                "2301013000170003": "https://drive.google.com/file/d/18bH8bNFvGqI--PYTS3r8qhr-apAI-OiyuMqA2Pj/view?usp=drivesdk",
-                "200100000790069": "https://drive.google.com/file/d/1wGFPQQpZzPkeqwHibUwD66zi8Jgz3pChvK/view?usp=drivesdk",
-                "21010100000200029": "https://drive.google.com/file/d/1tGI32l71z5002zVernbSv-QRrcJFbXPkb1hAG/view?usp=drivesdk",
-                "2201000001220017": "https://drive.google.com/file/d/1L80a9lfwqV7V-vtJdN7kRliJMdEfWEXIzsHsAY/view?usp=drivesdk",
-                "22010100000900078": "https://drive.google.com/file/d/1s9aOmJfva_e01tjdGW-vpciXMRkE8rcLSGDYjUU/view?usp=drivesdk",
-                "2201003000630003": "https://drive.google.com/file/d/13mDUdHUgW4CvQJ0OW6Sm8cYIVp4aDwGmR/view?usp=drivesdk",
-                "220101000200024": "https://drive.google.com/file/d/1TrdBgyrAC89NhXot7KLiXlu-XhpbNMi4CmdT/view?usp=drivesdk",
-                "200100000790025": "https://drive.google.com/file/d/1QjcldfGnh9fT8vVmH_cyvC8bR-hLktXIzny93c/view?usp=drivesdk",
-                "230100000470022": "https://drive.google.com/file/d/1FKPyB4TT39Dk-bAne5JHbP-EpGuyYxisIvAjf/view?usp=drivesdk",
-                "2301013000170025": "https://drive.google.com/file/d/1PVgtdzt307T0uOmPdM6oa8ljmWcq1cLzL8iD/view?usp=drivesdk",
-                "2301013001050015": "https://drive.google.com/file/d/1h8jN7XcbO3B2Z-lbTB7zQG20rM1wVYZCSXhR/view?usp=drivesdk",
-                "230100300030005": "https://drive.google.com/file/d/1xFgLj0j6IoA-h4NDbwwY2ZQjghODUYDsIuIIT/view?usp=drivesdk",
-                "2301013001760002": "https://drive.google.com/file/d/1_ZVPH3fn15o-wWqHha9rgqlBo5mn4bVj4DzUZ/view?usp=drivesdk",
-                "2301002000300004": "https://drive.google.com/file/d/18dgGv2BLj9o-PC0BB--t5QqkA-bszZrZ21GeO/view?usp=drivesdk",
-                "2301013001760003": "https://drive.google.com/file/d/1Z3nQ7R_p_0P8q-drpC1R-toiWyNQ3znQ0xOmN/view?usp=drivesdk",
-                "2301013001760008": "https://drive.google.com/file/d/1ci_paULp-h_m7jSezSnEq7rJF1oGNwVljdQCL/view?usp=drivesdk",
-                "2301010001050024": "https://drive.google.com/file/d/1fPHq1edtD5CjYy_p0aU4UuGvP5dG1f5-ZpYcNEQA/view?usp=drivesdk",
-                "2301010000610011": "https://drive.google.com/file/d/1Wdks-Y0j2z9S34-CcCtr4hxuTea8z-6HvuGndt/view?usp=drivesdk",
-                "230100000610006": "https://drive.google.com/file/d/1WqPryq-c_mF8Vvt8wSQtukFu8wBbCX5F31/view?usp=drivesdk",
-                "2301010001050020": "https://drive.google.com/file/d/1PAeMbhbFq_g8kKzbd6t16X_t3dj9mhqPwEaT/view?usp=drivesdk",
-                "230101000900084": "https://drive.google.com/file/d/1iD3Brqqz3r1HicvihrhZ75Ggss6XN0PxHoXZh/view?usp=drivesdk",
-                "2301003001760006": "https://drive.google.com/file/d/1qhzAqmLjLz-Yub1GrTUtmi09aOikhz0Et359/view?usp=drivesdk",
-                "230100300030006": "https://drive.google.com/file/d/1SA9lvMj--D5SStn73XVbpeNnqCae8UKBvRt/view?usp=drivesdk",
-                "230101300020003": "https://drive.google.com/file/d/1FPWEhV-W_Uq7etg4pug067Q7GCajeikYL4Due/view?usp=drivesdk",
-                "230100000900047": "https://drive.google.com/file/d/1_2Lh83evz_X9bWewqiPc02j8eshs52U8k3O1Z7/view?usp=drivesdk",
-                "230100800030008": "https://drive.google.com/file/d/1GiVgSY9c_c92Gw7QnWdj3euluqfrtMO1KEV0/view?usp=drivesdk",
-                "2301010000500012": "https://drive.google.com/file/d/1kp03SFTXe_W3Zf3WvsUwi2kp9phyMzRYlqy/view?usp=drivesdk",
-                "2301010001630008": "https://drive.google.com/file/d/13PgTCo5N_r1NnkaCrCIvQbw_7tLQE-_hFqbg/view?usp=drivesdk",
-                "2301010001050011": "https://drive.google.com/file/d/1gYK2Ad42o0t_gGuCa5ihFBIRNz48f7IzzcH/view?usp=drivesdk",
-                "2301010001010047": "https://drive.google.com/file/d/126M6_HBG37yL-s6JjVTXWYfp0DDbd4pjgBwLnE/view?usp=drivesdk",
-                "2301010001630006": "https://drive.google.com/file/d/1C96NYJ4U1p7-I-1Lp7AUWkcQ6KhE9OtaUqPzFot/view?usp=drivesdk",
-                "2301015000200033": "https://drive.google.com/file/d/1YooNNpLF0J2y9_Lhj7u43q_CMrLFQjbbzYr12Ef/view?usp=drivesdk",
-                "2301010000200023": "https://drive.google.com/file/d/1iXVBpyQGO5mscOEVihAF21L3rukddY12rKJe/view?usp=drivesdk",
-                "2301013000470012": "https://drive.google.com/file/d/1coWeWlG_R99iaVM5L6xad7ZEumCNQ-xmGRpSPqZ/view?usp=drivesdk",
-                "220101000200033": "https://drive.google.com/file/d/1XPoo6kejq67rRH_809P6LSSkfigbInFP-t_G/view?usp=drivesdk",
-                "2301013000200040": "https://drive.google.com/file/d/1hv0khkCB0H6x9I8yFDUKCQkge6wLm7z-w5kR/view?usp=drivesdk",
-                "2301010001630004": "https://drive.google.com/file/d/1rHMph09gBvSvygx5-gmyJbNlbNkDDLggM-AZe/view?usp=drivesdk",
-                "2301013000200027": "https://drive.google.com/file/d/12jMhypesc41_iIm4JM6fF48aeG3ky4QBEs1HQ/view?usp=drivesdk",
-                "2301003001220025": "https://drive.google.com/file/d/1ghj-rV2cKSWuhEuAJw-34Z4jbEtTTqVvVZV/view?usp=drivesdk",
-                "230101000200015": "https://drive.google.com/file/d/1fdA83_NiFAzrf4gLtVltxwSmcDGX6vWTT6/view?usp=drivesdk",
-                "230101000200016": "https://drive.google.com/file/d/1Luj_Bda2X-f2WtNlet58ZV-Rw7SffV5wrGWC/view?usp=drivesdk",
-                "230100000900011": "https://drive.google.com/file/d/1QG2rBo1v-6t3VN_hdUnCBSXmM3L9Ka7Mef7Cq/view?usp=drivesdk",
-                "230100000900039": "https://drive.google.com/file/d/1bedyqGRFk26o0kDT7idoOKJlL1q8bs1FlD1yr/view?usp=drivesdk",
-                "230100000900088": "https://drive.google.com/file/d/1gh-swUkJv6O8TWvnZkLUHjYXVK7sQYBI_-u/view?usp=drivesdk",
-                "2301010001050009": "https://drive.google.com/file/d/14VP7yWxj-L_k-52EAAHBDqMpmSwk3RIcPRZY/view?usp=drivesdk",
-                "230101000200032": "https://drive.google.com/file/d/1TksyH3l_L5M7-Jvt88qcg5-Ayg9jznYxaIVI/view?usp=drivesdk",
-                "2301010001010031": "https://drive.google.com/file/d/1TjCpMUpf1L2F-pVlCeDOB8rvlNCweRIC4pnpk5/view?usp=drivesdk",
-                "230101000900036": "https://drive.google.com/file/d/1CKPeIZ0Vc5t0bRIHS8iNDU53Y3UdYog6NL/view?usp=drivesdk",
-                "230101000900050": "https://drive.google.com/file/d/1MrwmJeiYxX-PYFXbDrfweywcK6fNDz1FEd7r3/view?usp=drivesdk",
-                "2301013000470005": "https://drive.google.com/file/d/1QryL2w8YQcQjgJuptvrmjwjF4NHvsXuTsiFmdB/view?usp=drivesdk",
-                "2301013000470034": "https://drive.google.com/file/d/1QVVENfj6-2jL-GrAtVCb4Y-DVwNW4W428G886qx/view?usp=drivesdk",
-                "230100000610001": "https://drive.google.com/file/d/1WZS3UrfaX6-scsNNucFciLXQWyBxTR9P98aW/view?usp=drivesdk",
-                "2301003001050014": "https://drive.google.com/file/d/1G6ja_Wpv5jSvtkuhaPiH__Sdfj-4ttcXgesXK/view?usp=drivesdk",
-                "230101000900022": "https://drive.google.com/file/d/1szk4oiN6M_0h-hThYo8RHydmKWr2ZEoDxZFz3Ei/view?usp=drivesdk",
-                "230101000760021": "https://drive.google.com/file/d/1wk8f4E5M0j_2McThZCX7W7te_ux1DKHQoCm9X/view?usp=drivesdk",
-                "2301002001750002": "https://drive.google.com/file/d/1P7NHCG-0H6W3omr37PglmfEAGqaloX1xZ84GT/view?usp=drivesdk",
-                "2301012001750011": "https://drive.google.com/file/d/1iiGRpQRF50I-Fpt-fAZfXPOs2if5l58PI-2S/view?usp=drivesdk",
-                "2301012001750015": "https://drive.google.com/file/d/1zshGRxlpcNn5dlLRRBcmx6avgLCVer3BFT8L07/view?usp=drivesdk",
-                "2301012001750007": "https://drive.google.com/file/d/1pmK5rYyx74P_kFKCNLBTfTshACGar29hVyloK/view?usp=drivesdk",
-                "2301012001750023": "https://drive.google.com/file/d/1Az7PEwIsK43tupd6aDVwfzZM3qxxQEG5rI4p/view?usp=drivesdk",
-                "2301003001910045": "https://drive.google.com/file/d/1ckNAdpL7-oQ34N8vSMzrVKq5BqcKhwwB0DEQ/view?usp=drivesdk",
-                "2301012001740003": "https://drive.google.com/file/d/1-44oAUB85iV83Rjz-Uk47pch1CMPF-p8L1qK5/view?usp=drivesdk",
-                "2301000002060045": "https://drive.google.com/file/d/1f6iGUYY9Dq_J0FhaA0RF9JL0TztEZJE4Lbm/view?usp=drivesdk",
-                "230100000900076": "https://drive.google.com/file/d/1mcSyIVW6-8W2bFwORpREn80iYaenE7h1o8K/view?usp=drivesdk",
-                "2301013000200038": "https://drive.google.com/file/d/1ziorALutVw-mOW__Tjgh-SGjkGXUv9fbOutkD/view?usp=drivesdk",
-                "2301003000470009": "https://drive.google.com/file/d/12dj-kEEjP4k-i0CzwgDnuVz_mikotd1vHQYj/view?usp=drivesdk",
-                "2301003000470026": "https://drive.google.com/file/d/1esH_jNVp9q-MonkD5Y7lsOqngwWgrA3EU6DVI/view?usp=drivesdk",
-                "2301003001910022": "https://drive.google.com/file/d/1O276l3rA-99VzLsTair_ciA7GbFbah9W8MRR/view?usp=drivesdk",
-                "230101000760028": "https://drive.google.com/file/d/1Ldk_ojVTMVn5iUeht6PcolhPheocd1jXLU7/view?usp=drivesdk",
-                "230100000470018": "https://drive.google.com/file/d/1rVD7-lO6L46HnCVUDswCQhEUxT4RQ1ZFmqR/view?usp=drivesdk",
-                "23010100001010057": "https://drive.google.com/file/d/1HVLyMklR-57mC7iPAVcVLGYM24t5jC54tTfC6/view?usp=drivesdk",
-                "230101000200025": "https://drive.google.com/file/d/1H3Zh7aplu9v50nwTCrvkKffm802-k6yciTExtG/view?usp=drivesdk",
-                "230101000760013": "https://drive.google.com/file/d/1R0hW9gW6V11i7WpI8IwrkJmHSmyniju0-rAyeIJ/view?usp=drivesdk",
-                "2301012001750008": "https://drive.google.com/file/d/1pM8sH0W-lM_5aMit5cXXWxlaBtNGKiSSYVv76gl/view?usp=drivesdk",
-                "2201003001420021": "https://drive.google.com/file/d/1OcMaO0uWJg9gldE92xwMTwR_5dL7VskzhC5Zx/view?usp=drivesdk" 
-                // Add more links as needed
-            };
 
             // Input validation: Ensure 16-digit number
             const isValidRegistrationNumber = (num) => /^\d{16}$/.test(num);
@@ -360,8 +470,8 @@
                 return;
             }
 
-            if (links[regNumber]) {
-                window.open(links[regNumber], '_blank');
+            if (rollNumberLinks[regNumber]) {
+                window.open(rollNumberLinks[regNumber], '_blank');
             } else {
                 alert("Please, check the registration number and try again. And note that this site currently hosts admit cards of class 11th only!");
             }
@@ -376,19 +486,16 @@
     <main>
         <h2>Access Your Exam Form Details</h2>
         <h3>Class 11th; Session 2024-25 revised</h3>
-
         <!-- Important Notice -->
         <div class="important-notice">
-            <!-- <img src="https://img.icons8.com/emoji/48/000000/high-importance-emoji.png" alt="Important Icon"> -->
             <div>
                 <strong>⚠️ Important Information/Instructions</strong>
-                <ul
+                <ul>
                     <li>Please verify all details on your details carefully. If you notice any discrepancies in your photograph, subjects or other details, contact the Admission & Examination Section within 3 days only.</li>
                     <em><li>Dt.: 21-Sept-2025.</li></em>
                 </ul>
             </div>
         </div>
-
         <!-- Registration Form -->
         <form onsubmit="accessFile(event)">
             <div class="form-group">
@@ -404,7 +511,3 @@
     </footer>
 </body>
 </html>
-
-
-
-
